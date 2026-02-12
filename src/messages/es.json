@@ -1,0 +1,294 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "freeQuote": "Cotización gratis"
+  },
+  "footer": {
+    "tagline": "Limpieza y mantenimiento profesional",
+    "mexicanOwned": "Empresa mexicana en Canadá",
+    "copyright": "© 2026 Parras General Services. Todos los derechos reservados.",
+    "privacy": "Política de privacidad"
+  },
+  "cookie": {
+    "title": "Usamos cookies",
+    "description": "Usamos cookies para mejorar tu experiencia. Al continuar visitando este sitio, aceptas nuestro uso de cookies.",
+    "acceptAll": "Aceptar todas",
+    "onlyEssential": "Solo esenciales",
+    "manage": "Administrar preferencias",
+    "essential": "Esenciales",
+    "essentialDesc": "Necesarias para el funcionamiento del sitio.",
+    "analytics": "Analíticas",
+    "analyticsDesc": "Nos ayudan a entender cómo los visitantes usan nuestro sitio.",
+    "marketing": "Marketing",
+    "marketingDesc": "Se utilizan para mostrar anuncios relevantes.",
+    "save": "Guardar preferencias"
+  },
+  "home": {
+    "hero": {
+      "title": "Limpieza comercial con imagen profesional",
+      "subtitle": "Empresa mexicana en Canadá. Espacios limpios, resultados constantes y estándares en los que puedes confiar.",
+      "cta": "Solicita una cotización gratis",
+      "secondary": "Explorar servicios"
+    },
+    "trust": {
+      "reliable": "Horarios confiables",
+      "trained": "Personal capacitado",
+      "quality": "Inspecciones de calidad",
+      "satisfaction": "Satisfacción garantizada"
+    },
+    "howWeWork": {
+      "title": "Cómo trabajamos",
+      "step1Title": "Evaluación del lugar",
+      "step1Desc": "Revisamos tu espacio y objetivos para crear un plan claro.",
+      "step2Title": "Limpieza inicial profunda",
+      "step2Desc": "Establecemos un estándar alto con una primera limpieza detallada.",
+      "step3Title": "Mantenimiento regular",
+      "step3Desc": "Mantenemos tu negocio limpio de forma constante con un plan programado.",
+      "step4Title": "Inspección de calidad",
+      "step4Desc": "Revisamos los resultados regularmente para mantener el estándar."
+    },
+    "services": {
+      "title": "Servicios diseñados para tu negocio",
+      "office": "Limpieza de oficinas",
+      "officeDesc": "Espacios de trabajo, salas de reuniones, baños y áreas comunes siempre impecables.",
+      "disinfection": "Servicios de desinfección",
+      "disinfectionDesc": "Desinfección de superficies de alto contacto para ambientes más saludables.",
+      "floor": "Cuidado de pisos",
+      "floorDesc": "Fregado, pulido y mantenimiento a largo plazo de pisos comerciales.",
+      "postConstruction": "Limpieza post-construcción",
+      "postConstructionDesc": "Eliminación de polvo, limpieza de escombros y acabado final después de obras.",
+      "carpet": "Alfombras y tapicería",
+      "carpetDesc": "Limpieza profunda que renueva alfombras y superficies de tela.",
+      "retail": "Comercios y áreas de alto tráfico",
+      "retailDesc": "Limpieza constante donde las primeras impresiones son las que más importan."
+    },
+    "whyChoose": {
+      "title": "Por qué elegir Parras",
+      "point1": "Comunicación clara y respuesta rápida.",
+      "point2": "Listas de verificación y control de calidad constantes.",
+      "point3": "Horarios flexibles (día, noche o fuera de horario).",
+      "point4": "Equipo profesional y productos seguros.",
+      "point5": "Fundada en 2022 con orgullo, disciplina y atención al detalle."
+    },
+    "cta": {
+      "title": "¿Listo para un negocio más limpio y profesional?",
+      "button": "Contáctanos"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Acerca de Parras General Services",
+      "subtitle": "Una empresa de limpieza mexicana en Canadá, construida sobre la confiabilidad y el orgullo."
+    },
+    "whoWeAre": {
+      "title": "Quiénes somos",
+      "text": "Parras General Services ofrece servicios de limpieza y mantenimiento comercial con un objetivo simple: hacer bien el trabajo, a tiempo y con resultados visibles.\n\nFundada en 2022 por un amigo que inició la empresa solo, Parras creció de la dedicación de una sola persona a un equipo comprometido, enfocado en la calidad, la constancia y el respeto por cada espacio que atendemos. Hoy ayudamos a las empresas a mantener sus ambientes limpios, seguros y profesionales, respaldados por procesos claros y comunicación directa."
+    },
+    "mission": {
+      "title": "Nuestra misión",
+      "text": "Ofrecer servicios de limpieza y mantenimiento confiables y constantes, con atención al detalle, para que nuestros clientes puedan enfocarse en su negocio mientras nosotros nos encargamos de la limpieza y la presentación."
+    },
+    "vision": {
+      "title": "Nuestra visión",
+      "text": "Ser reconocidos como un socio de confianza a largo plazo para la limpieza comercial en Canadá, conocidos por nuestro profesionalismo, puntualidad y estándares constantes."
+    },
+    "values": {
+      "title": "Nuestros valores",
+      "responsibility": "Responsabilidad",
+      "responsibilityDesc": "Cumplimos lo que prometemos.",
+      "qualityVal": "Calidad",
+      "qualityDesc": "Resultados limpios, bien hechos.",
+      "respect": "Respeto",
+      "respectDesc": "Por tu espacio, tu tiempo y nuestro equipo.",
+      "communication": "Comunicación clara",
+      "communicationDesc": "Sin confusiones, sin sorpresas.",
+      "safety": "Seguridad",
+      "safetyDesc": "Trabajo ordenado y prácticas cuidadosas."
+    },
+    "different": {
+      "title": "Construida con orgullo, mantenida con estándares",
+      "text": "Nuestra identidad es orgullosamente mexicana, y nuestros estándares están diseñados para empresas canadienses: procesos estructurados, horarios confiables y controles de calidad que protegen la imagen de tu marca."
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Servicios de limpieza comercial",
+      "subtitle": "Soluciones de limpieza profesional para oficinas, comercios y propiedades comerciales."
+    },
+    "whyCleanliness": {
+      "title": "Un espacio limpio lo cambia todo",
+      "point1": "Mejora la comodidad y productividad de los empleados.",
+      "point2": "Favorece ambientes más saludables al reducir la contaminación en superficies de alto contacto.",
+      "point3": "Genera confianza en clientes y visitantes.",
+      "point4": "Protege pisos y superficies a largo plazo."
+    },
+    "howWeWork": {
+      "title": "Cómo trabajamos",
+      "step1Title": "Evaluación del lugar",
+      "step1Desc": "Revisamos tu espacio y objetivos para crear un plan claro.",
+      "step1Detail": "Nuestro equipo realiza un recorrido completo de tus instalaciones para entender tus necesidades, patrones de tráfico y requisitos específicos.",
+      "step2Title": "Limpieza inicial profunda",
+      "step2Desc": "Establecemos un estándar alto con una primera limpieza detallada.",
+      "step2Detail": "La primera sesión establece la referencia: cada superficie, rincón y detalle recibe atención completa para fijar nuestro estándar de calidad.",
+      "step3Title": "Mantenimiento regular",
+      "step3Desc": "Mantenemos tu negocio limpio de forma constante con un plan programado.",
+      "step3Detail": "Con un calendario de limpieza personalizado, mantenemos el estándar día tras día, adaptándonos a tus necesidades operativas.",
+      "step4Title": "Inspección de calidad",
+      "step4Desc": "Revisamos los resultados regularmente para mantener el estándar.",
+      "step4Detail": "Inspecciones regulares y seguimiento continuo aseguran que nada se pase por alto — tu espacio se mantiene limpio y profesional."
+    },
+    "grid": {
+      "office": "Limpieza de oficinas",
+      "officeDesc": "Limpieza completa de espacios de trabajo, salas de reuniones, baños, cocinas y áreas comunes. Mantenemos tu oficina con aspecto profesional todos los días.",
+      "officeInc1": "Desinfección de escritorios y superficies",
+      "officeInc2": "Limpieza profunda de baños",
+      "officeInc3": "Retiro de basura y reciclaje",
+      "janitorial": "Servicios de conserjería",
+      "janitorialDesc": "Mantenimiento continuo de instalaciones que incluye reabastecimiento de insumos, gestión de residuos y mantenimiento diario para un ambiente siempre limpio.",
+      "janitorialInc1": "Reabastecimiento de insumos",
+      "janitorialInc2": "Gestión diaria de residuos",
+      "janitorialInc3": "Mantenimiento de áreas comunes",
+      "disinfection": "Servicios de desinfección",
+      "disinfectionDesc": "Desinfección dirigida de superficies de alto contacto y espacios compartidos para reducir la propagación de gérmenes y promover ambientes de trabajo más saludables.",
+      "disinfectionInc1": "Tratamiento de superficies de alto contacto",
+      "disinfectionInc2": "Pulverización electrostática disponible",
+      "disinfectionInc3": "Productos conformes a normas sanitarias",
+      "floor": "Cuidado de pisos",
+      "floorDesc": "Mantenimiento profesional de pisos que incluye fregado, encerado, pulido y programas de cuidado a largo plazo para todo tipo de pisos comerciales.",
+      "floorInc1": "Servicio de decapado y encerado",
+      "floorInc2": "Fregado y pulido con maquinaria",
+      "floorInc3": "Limpieza de azulejos y juntas",
+      "carpet": "Limpieza de alfombras",
+      "carpetDesc": "Limpieza profunda por extracción para alfombras y muebles tapizados que elimina manchas, olores y suciedad incrustada.",
+      "carpetInc1": "Extracción con agua caliente",
+      "carpetInc2": "Tratamiento de manchas",
+      "carpetInc3": "Limpieza de tapicería",
+      "postConstruction": "Limpieza post-construcción",
+      "postConstructionDesc": "Limpieza completa después de renovaciones o proyectos de construcción: eliminación de polvo, retiro de escombros y acabado final.",
+      "postConstructionInc1": "Eliminación de polvo y escombros",
+      "postConstructionInc2": "Limpieza de ventanas y superficies",
+      "postConstructionInc3": "Acabado final e inspección",
+      "retail": "Limpieza de comercios y áreas de alto tráfico",
+      "retailDesc": "Limpieza especializada para tiendas, vestíbulos y espacios comerciales de alto tráfico donde las primeras impresiones importan.",
+      "retailInc1": "Mantenimiento de entradas y vestíbulos",
+      "retailInc2": "Limpieza de exhibidores y estantes",
+      "retailInc3": "Cuidado de pisos con alto tránsito",
+      "includes": "Incluye"
+    },
+    "commitment": {
+      "title": "Nuestro compromiso",
+      "point1": "Satisfacción garantizada",
+      "point2": "Personal capacitado y equipo profesional",
+      "point3": "Inspecciones de calidad",
+      "point4": "Horarios flexibles",
+      "point5": "Comunicación confiable"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": "¿Con qué frecuencia debería limpiarse mi negocio?",
+      "a1": "Depende del tráfico y de tu industria. La mayoría de los espacios comerciales se benefician de un programa de limpieza diario o semanal. Podemos ayudarte a determinar la frecuencia ideal durante nuestra evaluación del lugar.",
+      "q2": "¿Traen sus propios productos y equipo?",
+      "a2": "Sí, traemos todos los productos de limpieza y el equipo profesional necesarios. Si tienes productos preferidos o requisitos específicos, nos adaptamos con gusto.",
+      "q3": "¿Pueden trabajar fuera del horario de oficina?",
+      "a3": "Por supuesto. Ofrecemos horarios flexibles que incluyen noches, madrugadas y fines de semana para minimizar las interrupciones en tus operaciones.",
+      "q4": "¿Sus servicios son personalizables?",
+      "a4": "Sí, cada plan de limpieza se adapta a tu espacio, necesidades y presupuesto. Trabajamos contigo para crear un plan que tenga sentido para tu negocio.",
+      "q5": "¿Qué áreas desinfectan?",
+      "a5": "Nos enfocamos en superficies de alto contacto como manijas de puertas, interruptores de luz, botones de elevador, escritorios compartidos y accesorios de baño. También podemos realizar desinfección completa de espacios cuando sea necesario.",
+      "q6": "¿Cómo solicito el servicio?",
+      "a6": "Solo tienes que completar nuestro formulario de contacto o llamarnos directamente. Programaremos una evaluación del lugar y te proporcionaremos una cotización detallada sin costo."
+    },
+    "ctaBanner": {
+      "title": "¿Listo para comenzar?",
+      "button": "Solicitar una cotización gratis"
+    }
+  },
+  "blog": {
+    "title": "Consejos y novedades de limpieza",
+    "subtitle": "Guías prácticas para mantener espacios comerciales limpios y profesionales.",
+    "search": "Buscar artículos...",
+    "allCategories": "Todas las categorías",
+    "noResults": "No se encontraron artículos",
+    "noResultsDesc": "Vuelve pronto para consejos de limpieza y novedades, o contáctanos para ayuda inmediata.",
+    "readMore": "Leer más",
+    "relatedPosts": "Artículos relacionados",
+    "needHelp": "¿Necesitas ayuda profesional?",
+    "needHelpDesc": "Nuestro equipo está listo para ayudarte con tus necesidades de limpieza.",
+    "contactUs": "Contáctanos",
+    "publishedOn": "Publicado el"
+  },
+  "contact": {
+    "hero": {
+      "title": "Solicita una cotización gratis",
+      "subtitle": "Cuéntanos lo que necesitas y nos pondremos en contacto lo antes posible."
+    },
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "phoneHint": "Opcional pero recomendado",
+      "companyName": "Nombre de la empresa",
+      "companyNameHint": "Opcional",
+      "serviceType": "Tipo de servicio",
+      "serviceTypeSelect": "Selecciona un servicio",
+      "serviceOffice": "Limpieza de oficinas",
+      "serviceJanitorial": "Servicios de conserjería",
+      "serviceDisinfection": "Servicios de desinfección",
+      "serviceFloor": "Cuidado de pisos",
+      "serviceCarpet": "Limpieza de alfombras",
+      "servicePostConstruction": "Limpieza post-construcción",
+      "serviceRetail": "Limpieza de comercios y áreas de alto tráfico",
+      "serviceOther": "Otro",
+      "requestedDate": "Fecha de servicio deseada",
+      "requestedDateHint": "Opcional",
+      "addressLine1": "Dirección línea 1",
+      "addressLine2": "Dirección línea 2",
+      "city": "Ciudad",
+      "province": "Provincia / Estado",
+      "postalCode": "Código postal",
+      "contactTime": "¿Cuándo podemos contactarte?",
+      "anytime": "Cualquier momento",
+      "am": "AM (Mañana)",
+      "pm": "PM (Tarde)",
+      "message": "Mensaje / Detalles",
+      "consent": "Acepto ser contactado por Parras General Services en relación con mi solicitud.",
+      "submit": "Enviar solicitud",
+      "submitting": "Enviando...",
+      "success": "¡Gracias! Recibimos tu solicitud y te contactaremos pronto.",
+      "error": "Algo salió mal. Por favor intenta de nuevo.",
+      "required": "Este campo es obligatorio.",
+      "invalidEmail": "Por favor ingresa un correo electrónico válido."
+    }
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "lastUpdated": "Última actualización: febrero de 2026",
+    "intro": "Parras General Services (\"nosotros\", \"nuestro\", \"nuestra\") se compromete a proteger tu privacidad. Esta política explica cómo recopilamos, usamos y protegemos tu información personal en cumplimiento con la Ley de Protección de Información Personal y Documentos Electrónicos (PIPEDA) de Canadá.",
+    "section1Title": "Información que recopilamos",
+    "section1Text": "Recopilamos la información personal que proporcionas voluntariamente al enviar nuestro formulario de contacto, incluyendo tu nombre, correo electrónico, número de teléfono, nombre de la empresa, dirección y detalles del mensaje. También recopilamos datos básicos de uso a través de cookies para mejorar tu experiencia en nuestro sitio.",
+    "section2Title": "Cómo usamos tu información",
+    "section2Text": "Usamos la información que proporcionas para responder a tus consultas, preparar cotizaciones de nuestros servicios y comunicarnos contigo sobre nuestros servicios de limpieza. No vendemos, intercambiamos ni compartimos tu información personal con terceros con fines de marketing.",
+    "section3Title": "Cookies",
+    "section3Text": "Nuestro sitio utiliza cookies para mejorar tu experiencia de navegación. Las cookies esenciales son necesarias para el funcionamiento del sitio. Las cookies analíticas nos ayudan a entender cómo los visitantes usan nuestro sitio. Puedes administrar tus preferencias de cookies en cualquier momento a través de la configuración de cookies de nuestro sitio.",
+    "section4Title": "Seguridad de los datos",
+    "section4Text": "Implementamos medidas técnicas y organizacionales apropiadas para proteger tu información personal contra el acceso no autorizado, la alteración, la divulgación o la destrucción.",
+    "section5Title": "Tus derechos",
+    "section5Text": "Bajo PIPEDA, tienes derecho a acceder, corregir o eliminar tu información personal. Para ejercer estos derechos, por favor contáctanos usando la información a continuación.",
+    "section6Title": "Contáctanos",
+    "section6Text": "Si tienes preguntas sobre esta política de privacidad o sobre tus datos personales, contáctanos en:"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o fue movida.",
+    "goHome": "Ir al inicio"
+  },
+  "whatsapp": {
+    "tooltip": "Chatea con nosotros por WhatsApp",
+    "message": "Hola, estoy interesado en sus servicios de limpieza."
+  },
+  "backToTop": "Volver arriba"
+}

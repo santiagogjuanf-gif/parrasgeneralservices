@@ -1,0 +1,294 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "freeQuote": "Free Quote"
+  },
+  "footer": {
+    "tagline": "Professional Cleaning & Maintenance",
+    "mexicanOwned": "Mexican-owned in Canada",
+    "copyright": "© 2026 Parras General Services. All rights reserved.",
+    "privacy": "Privacy Policy"
+  },
+  "cookie": {
+    "title": "We use cookies",
+    "description": "We use cookies to improve your experience. By continuing to visit this site you agree to our use of cookies.",
+    "acceptAll": "Accept All",
+    "onlyEssential": "Only Essential",
+    "manage": "Manage Preferences",
+    "essential": "Essential",
+    "essentialDesc": "Required for the website to function properly.",
+    "analytics": "Analytics",
+    "analyticsDesc": "Help us understand how visitors use our website.",
+    "marketing": "Marketing",
+    "marketingDesc": "Used to deliver relevant advertisements.",
+    "save": "Save Preferences"
+  },
+  "home": {
+    "hero": {
+      "title": "Commercial Cleaning That Looks Professional",
+      "subtitle": "Mexican-owned in Canada. Clean spaces, consistent results, and standards you can trust.",
+      "cta": "Get a Free Quote",
+      "secondary": "Explore Services"
+    },
+    "trust": {
+      "reliable": "Reliable Scheduling",
+      "trained": "Trained Staff",
+      "quality": "Quality Inspections",
+      "satisfaction": "Satisfaction Guaranteed"
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "step1Title": "Site Evaluation",
+      "step1Desc": "We review your space and goals to create a clear plan.",
+      "step2Title": "Deep Initial Cleaning",
+      "step2Desc": "We establish a high standard with a detailed first clean.",
+      "step3Title": "Routine Maintenance",
+      "step3Desc": "We keep your business consistently clean with a scheduled plan.",
+      "step4Title": "Quality Inspection",
+      "step4Desc": "We check results regularly to maintain the standard."
+    },
+    "services": {
+      "title": "Services Designed for Your Business",
+      "office": "Office Cleaning",
+      "officeDesc": "Workspaces, meeting rooms, washrooms, and common areas kept spotless.",
+      "disinfection": "Disinfection Services",
+      "disinfectionDesc": "High-touch surface disinfection to support healthier environments.",
+      "floor": "Floor Care",
+      "floorDesc": "Scrubbing, polishing, and long-term floor maintenance for commercial spaces.",
+      "postConstruction": "Post-Construction Cleaning",
+      "postConstructionDesc": "Dust removal, debris cleanup, and final detailing after projects.",
+      "carpet": "Carpet & Upholstery",
+      "carpetDesc": "Deep cleaning that refreshes carpets and fabric surfaces.",
+      "retail": "Retail & High-Traffic Areas",
+      "retailDesc": "Consistent cleaning where first impressions matter most."
+    },
+    "whyChoose": {
+      "title": "Why Choose Parras",
+      "point1": "Clear communication and fast response.",
+      "point2": "Consistent checklists and quality control.",
+      "point3": "Flexible scheduling (day, evening, or after-hours).",
+      "point4": "Professional equipment and safe products.",
+      "point5": "Built in 2022 with pride, discipline, and attention to detail."
+    },
+    "cta": {
+      "title": "Ready for a cleaner, better-looking business?",
+      "button": "Contact Us"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Parras General Services",
+      "subtitle": "A Mexican-owned cleaning company in Canada, built on reliability and pride."
+    },
+    "whoWeAre": {
+      "title": "Who We Are",
+      "text": "Parras General Services delivers commercial cleaning and maintenance with a simple goal: do the job right, on time, and with results you can see.\n\nFounded in 2022 by a friend who started the company alone, Parras grew from one-person dedication into a committed team focused on quality, consistency, and respect for every space we serve. Today we help businesses keep their environments clean, safe, and professional—supported by clear processes and direct communication."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "To deliver reliable, consistent cleaning and maintenance services with attention to detail—so our clients can focus on their business while we take care of the cleanliness and presentation."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "To be recognized as a trusted long-term partner for commercial cleaning in Canada, known for professionalism, punctuality, and standards that stay consistent."
+    },
+    "values": {
+      "title": "Our Values",
+      "responsibility": "Responsibility",
+      "responsibilityDesc": "We do what we promise.",
+      "qualityVal": "Quality",
+      "qualityDesc": "Clean results, done properly.",
+      "respect": "Respect",
+      "respectDesc": "For your space, your time, and our team.",
+      "communication": "Clear Communication",
+      "communicationDesc": "No confusion, no surprises.",
+      "safety": "Safety",
+      "safetyDesc": "Orderly work and careful practices."
+    },
+    "different": {
+      "title": "Built with Pride, Maintained with Standards",
+      "text": "Our identity is proudly Mexican, and our standards are built for Canadian businesses: structured processes, reliable scheduling, and quality checks that protect your brand image."
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Commercial Cleaning Services",
+      "subtitle": "Professional cleaning solutions for offices, retail spaces, and commercial properties."
+    },
+    "whyCleanliness": {
+      "title": "A Clean Space Changes Everything",
+      "point1": "Improves employee comfort and productivity.",
+      "point2": "Supports healthier environments by reducing high-touch contamination.",
+      "point3": "Builds trust with clients and visitors.",
+      "point4": "Protects floors and surfaces long-term."
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "step1Title": "Site Evaluation",
+      "step1Desc": "We review your space and goals to create a clear plan.",
+      "step1Detail": "Our team conducts a thorough walkthrough of your facility to understand your needs, traffic patterns, and specific requirements.",
+      "step2Title": "Deep Initial Cleaning",
+      "step2Desc": "We establish a high standard with a detailed first clean.",
+      "step2Detail": "The first session sets the benchmark—every surface, corner, and detail receives full attention to establish our quality standard.",
+      "step3Title": "Routine Maintenance",
+      "step3Desc": "We keep your business consistently clean with a scheduled plan.",
+      "step3Detail": "With a customized cleaning schedule, we maintain the standard day after day, adapting to your operational needs.",
+      "step4Title": "Quality Inspection",
+      "step4Desc": "We check results regularly to maintain the standard.",
+      "step4Detail": "Regular inspections and feedback loops ensure nothing slips through—your space stays clean and professional."
+    },
+    "grid": {
+      "office": "Office Cleaning",
+      "officeDesc": "Complete cleaning for workspaces, meeting rooms, washrooms, kitchens, and common areas. We keep your office looking professional every day.",
+      "officeInc1": "Desk and surface sanitization",
+      "officeInc2": "Washroom deep cleaning",
+      "officeInc3": "Trash removal and recycling",
+      "janitorial": "Janitorial Services",
+      "janitorialDesc": "Ongoing facility maintenance including restocking supplies, waste management, and daily upkeep for a consistently clean environment.",
+      "janitorialInc1": "Supply restocking",
+      "janitorialInc2": "Daily waste management",
+      "janitorialInc3": "Common area maintenance",
+      "disinfection": "Disinfection Services",
+      "disinfectionDesc": "Targeted disinfection of high-touch surfaces and shared spaces to reduce the spread of germs and support healthier work environments.",
+      "disinfectionInc1": "High-touch surface treatment",
+      "disinfectionInc2": "Electrostatic spraying available",
+      "disinfectionInc3": "Health-compliant products",
+      "floor": "Floor Care",
+      "floorDesc": "Professional floor maintenance including scrubbing, waxing, polishing, and long-term care programs for all commercial flooring types.",
+      "floorInc1": "Strip and wax services",
+      "floorInc2": "Machine scrubbing and buffing",
+      "floorInc3": "Tile and grout cleaning",
+      "carpet": "Carpet Cleaning",
+      "carpetDesc": "Deep extraction cleaning for carpets and upholstered furniture that removes stains, odors, and embedded dirt.",
+      "carpetInc1": "Hot water extraction",
+      "carpetInc2": "Spot and stain treatment",
+      "carpetInc3": "Upholstery cleaning",
+      "postConstruction": "Post-Construction Cleaning",
+      "postConstructionDesc": "Complete cleanup after renovations or construction projects—dust removal, debris clearing, and final detailing.",
+      "postConstructionInc1": "Dust and debris removal",
+      "postConstructionInc2": "Window and surface cleaning",
+      "postConstructionInc3": "Final detail and inspection",
+      "retail": "Retail & High-Traffic Cleaning",
+      "retailDesc": "Specialized cleaning for retail stores, lobbies, and high-traffic commercial spaces where first impressions matter.",
+      "retailInc1": "Entrance and lobby maintenance",
+      "retailInc2": "Display and shelf dusting",
+      "retailInc3": "Floor care for heavy foot traffic",
+      "includes": "Includes"
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "point1": "Satisfaction Guaranteed",
+      "point2": "Trained Staff & Professional Equipment",
+      "point3": "Quality Inspections",
+      "point4": "Flexible Scheduling",
+      "point5": "Reliable Communication"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "How often should my business be cleaned?",
+      "a1": "It depends on foot traffic and your industry. Most commercial spaces benefit from daily or weekly cleaning schedules. We can help determine the best frequency during our site evaluation.",
+      "q2": "Do you bring supplies and equipment?",
+      "a2": "Yes, we bring all necessary cleaning supplies and professional-grade equipment. If you have preferred products or specific requirements, we're happy to accommodate.",
+      "q3": "Can you work after business hours?",
+      "a3": "Absolutely. We offer flexible scheduling including evenings, early mornings, and weekends to minimize disruption to your operations.",
+      "q4": "Are your services customizable?",
+      "a4": "Yes, every cleaning plan is tailored to your space, needs, and budget. We work with you to build a plan that makes sense for your business.",
+      "q5": "What areas do you disinfect?",
+      "a5": "We focus on high-touch surfaces such as door handles, light switches, elevator buttons, shared desks, and washroom fixtures. We can also provide full-room disinfection when needed.",
+      "q6": "How do I request service?",
+      "a6": "Simply fill out our contact form or call us directly. We'll schedule a site evaluation and provide a detailed quote at no cost."
+    },
+    "ctaBanner": {
+      "title": "Ready to get started?",
+      "button": "Request a Free Quote"
+    }
+  },
+  "blog": {
+    "title": "Cleaning Tips & Updates",
+    "subtitle": "Practical guidance for keeping commercial spaces clean and professional.",
+    "search": "Search posts...",
+    "allCategories": "All Categories",
+    "noResults": "No posts found",
+    "noResultsDesc": "Check back soon for cleaning tips and updates, or contact us for immediate help.",
+    "readMore": "Read more",
+    "relatedPosts": "Related Posts",
+    "needHelp": "Need professional help?",
+    "needHelpDesc": "Our team is ready to assist you with your cleaning needs.",
+    "contactUs": "Contact Us",
+    "publishedOn": "Published on"
+  },
+  "contact": {
+    "hero": {
+      "title": "Request a Free Quote",
+      "subtitle": "Tell us what you need, and we'll contact you as soon as possible."
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "phoneHint": "Optional but recommended",
+      "companyName": "Company Name",
+      "companyNameHint": "Optional",
+      "serviceType": "Service Type",
+      "serviceTypeSelect": "Select a service",
+      "serviceOffice": "Office Cleaning",
+      "serviceJanitorial": "Janitorial Services",
+      "serviceDisinfection": "Disinfection Services",
+      "serviceFloor": "Floor Care",
+      "serviceCarpet": "Carpet Cleaning",
+      "servicePostConstruction": "Post-Construction Cleaning",
+      "serviceRetail": "Retail & High-Traffic Cleaning",
+      "serviceOther": "Other",
+      "requestedDate": "Requested Service Date",
+      "requestedDateHint": "Optional",
+      "addressLine1": "Address Line 1",
+      "addressLine2": "Address Line 2",
+      "city": "City",
+      "province": "Province / State",
+      "postalCode": "Postal Code",
+      "contactTime": "When can we contact you?",
+      "anytime": "Anytime",
+      "am": "AM (Morning)",
+      "pm": "PM (Afternoon)",
+      "message": "Message / Details",
+      "consent": "I agree to be contacted by Parras General Services regarding my request.",
+      "submit": "Submit Request",
+      "submitting": "Submitting...",
+      "success": "Thank you! We received your request and will contact you soon.",
+      "error": "Something went wrong. Please try again.",
+      "required": "This field is required.",
+      "invalidEmail": "Please enter a valid email address."
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 2026",
+    "intro": "Parras General Services (\"we\", \"us\", \"our\") is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information in compliance with Canada's Personal Information Protection and Electronic Documents Act (PIPEDA).",
+    "section1Title": "Information We Collect",
+    "section1Text": "We collect personal information that you voluntarily provide when you submit our contact form, including your name, email address, phone number, company name, address, and message details. We also collect basic usage data through cookies to improve your experience on our website.",
+    "section2Title": "How We Use Your Information",
+    "section2Text": "We use the information you provide to respond to your inquiries, provide quotes for our services, and communicate with you about our cleaning services. We do not sell, trade, or share your personal information with third parties for marketing purposes.",
+    "section3Title": "Cookies",
+    "section3Text": "Our website uses cookies to enhance your browsing experience. Essential cookies are required for the website to function. Analytics cookies help us understand how visitors use our site. You can manage your cookie preferences at any time through the cookie settings on our website.",
+    "section4Title": "Data Security",
+    "section4Text": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+    "section5Title": "Your Rights",
+    "section5Text": "Under PIPEDA, you have the right to access, correct, or delete your personal information. To exercise these rights, please contact us using the information below.",
+    "section6Title": "Contact Us",
+    "section6Text": "If you have questions about this privacy policy or your personal data, please contact us at:"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go to Homepage"
+  },
+  "whatsapp": {
+    "tooltip": "Chat with us on WhatsApp",
+    "message": "Hi, I'm interested in your cleaning services."
+  },
+  "backToTop": "Back to top"
+}

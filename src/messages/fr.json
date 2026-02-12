@@ -1,0 +1,294 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "blog": "Blogue",
+    "contact": "Contact",
+    "freeQuote": "Soumission gratuite"
+  },
+  "footer": {
+    "tagline": "Nettoyage et entretien professionnels",
+    "mexicanOwned": "Entreprise mexicaine au Canada",
+    "copyright": "© 2026 Parras General Services. Tous droits réservés.",
+    "privacy": "Politique de confidentialité"
+  },
+  "cookie": {
+    "title": "Nous utilisons des témoins",
+    "description": "Nous utilisons des témoins pour améliorer votre expérience. En continuant à visiter ce site, vous acceptez notre utilisation des témoins.",
+    "acceptAll": "Tout accepter",
+    "onlyEssential": "Essentiels seulement",
+    "manage": "Gérer les préférences",
+    "essential": "Essentiels",
+    "essentialDesc": "Nécessaires au bon fonctionnement du site.",
+    "analytics": "Analytiques",
+    "analyticsDesc": "Nous aident à comprendre comment les visiteurs utilisent notre site.",
+    "marketing": "Marketing",
+    "marketingDesc": "Utilisés pour afficher des publicités pertinentes.",
+    "save": "Enregistrer les préférences"
+  },
+  "home": {
+    "hero": {
+      "title": "Un nettoyage commercial à la hauteur de votre image",
+      "subtitle": "Entreprise mexicaine au Canada. Des espaces propres, des résultats constants et des standards de confiance.",
+      "cta": "Obtenir une soumission gratuite",
+      "secondary": "Découvrir nos services"
+    },
+    "trust": {
+      "reliable": "Horaires fiables",
+      "trained": "Personnel formé",
+      "quality": "Inspections de qualité",
+      "satisfaction": "Satisfaction garantie"
+    },
+    "howWeWork": {
+      "title": "Notre façon de travailler",
+      "step1Title": "Évaluation des lieux",
+      "step1Desc": "Nous analysons votre espace et vos objectifs pour établir un plan clair.",
+      "step2Title": "Nettoyage initial en profondeur",
+      "step2Desc": "Nous établissons un standard élevé dès le premier nettoyage.",
+      "step3Title": "Entretien régulier",
+      "step3Desc": "Nous maintenons la propreté de vos locaux grâce à un plan d'entretien planifié.",
+      "step4Title": "Inspection de qualité",
+      "step4Desc": "Nous vérifions les résultats régulièrement pour maintenir nos standards."
+    },
+    "services": {
+      "title": "Des services conçus pour votre entreprise",
+      "office": "Nettoyage de bureaux",
+      "officeDesc": "Espaces de travail, salles de réunion, toilettes et aires communes toujours impeccables.",
+      "disinfection": "Services de désinfection",
+      "disinfectionDesc": "Désinfection des surfaces à contact fréquent pour des environnements plus sains.",
+      "floor": "Entretien des planchers",
+      "floorDesc": "Récurage, polissage et entretien à long terme des planchers commerciaux.",
+      "postConstruction": "Nettoyage après construction",
+      "postConstructionDesc": "Élimination de la poussière, nettoyage des débris et finition après les travaux.",
+      "carpet": "Tapis et tissus d'ameublement",
+      "carpetDesc": "Nettoyage en profondeur qui ravive vos tapis et surfaces en tissu.",
+      "retail": "Commerce de détail et zones achalandées",
+      "retailDesc": "Un nettoyage constant là où les premières impressions comptent le plus."
+    },
+    "whyChoose": {
+      "title": "Pourquoi choisir Parras",
+      "point1": "Communication claire et réponse rapide.",
+      "point2": "Listes de vérification rigoureuses et contrôle de la qualité.",
+      "point3": "Horaires flexibles (jour, soir ou en dehors des heures d'ouverture).",
+      "point4": "Équipement professionnel et produits sécuritaires.",
+      "point5": "Fondée en 2022 avec fierté, discipline et souci du détail."
+    },
+    "cta": {
+      "title": "Prêt pour des locaux plus propres et plus professionnels?",
+      "button": "Nous joindre"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "À propos de Parras General Services",
+      "subtitle": "Une entreprise de nettoyage mexicaine au Canada, bâtie sur la fiabilité et la fierté."
+    },
+    "whoWeAre": {
+      "title": "Qui nous sommes",
+      "text": "Parras General Services offre des services de nettoyage et d'entretien commercial avec un objectif simple : bien faire le travail, à temps, avec des résultats visibles.\n\nFondée en 2022 par un ami qui a démarré l'entreprise seul, Parras est passée d'un effort individuel à une équipe engagée, axée sur la qualité, la constance et le respect de chaque espace que nous entretenons. Aujourd'hui, nous aidons les entreprises à maintenir des environnements propres, sécuritaires et professionnels, appuyés par des processus clairs et une communication directe."
+    },
+    "mission": {
+      "title": "Notre mission",
+      "text": "Offrir des services de nettoyage et d'entretien fiables et constants, avec un souci du détail, afin que nos clients puissent se concentrer sur leurs affaires pendant que nous nous occupons de la propreté et de la présentation."
+    },
+    "vision": {
+      "title": "Notre vision",
+      "text": "Être reconnus comme un partenaire de confiance à long terme pour le nettoyage commercial au Canada, réputés pour notre professionnalisme, notre ponctualité et nos standards constants."
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "responsibility": "Responsabilité",
+      "responsibilityDesc": "Nous faisons ce que nous promettons.",
+      "qualityVal": "Qualité",
+      "qualityDesc": "Des résultats propres, bien exécutés.",
+      "respect": "Respect",
+      "respectDesc": "Pour votre espace, votre temps et notre équipe.",
+      "communication": "Communication claire",
+      "communicationDesc": "Pas de confusion, pas de surprises.",
+      "safety": "Sécurité",
+      "safetyDesc": "Un travail ordonné et des pratiques rigoureuses."
+    },
+    "different": {
+      "title": "Bâtie avec fierté, maintenue avec rigueur",
+      "text": "Notre identité est fièrement mexicaine, et nos standards sont conçus pour les entreprises canadiennes : des processus structurés, des horaires fiables et des contrôles de qualité qui protègent votre image de marque."
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Services de nettoyage commercial",
+      "subtitle": "Des solutions de nettoyage professionnelles pour bureaux, commerces et propriétés commerciales."
+    },
+    "whyCleanliness": {
+      "title": "Un espace propre change tout",
+      "point1": "Améliore le confort et la productivité des employés.",
+      "point2": "Favorise des environnements plus sains en réduisant la contamination des surfaces.",
+      "point3": "Renforce la confiance des clients et des visiteurs.",
+      "point4": "Protège les planchers et les surfaces à long terme."
+    },
+    "howWeWork": {
+      "title": "Notre façon de travailler",
+      "step1Title": "Évaluation des lieux",
+      "step1Desc": "Nous analysons votre espace et vos objectifs pour établir un plan clair.",
+      "step1Detail": "Notre équipe effectue une visite complète de vos installations pour comprendre vos besoins, les habitudes de circulation et vos exigences particulières.",
+      "step2Title": "Nettoyage initial en profondeur",
+      "step2Desc": "Nous établissons un standard élevé dès le premier nettoyage.",
+      "step2Detail": "La première séance établit la référence : chaque surface, chaque recoin et chaque détail reçoit une attention complète pour fixer notre standard de qualité.",
+      "step3Title": "Entretien régulier",
+      "step3Desc": "Nous maintenons la propreté de vos locaux grâce à un plan d'entretien planifié.",
+      "step3Detail": "Avec un calendrier de nettoyage personnalisé, nous maintenons le standard jour après jour, en nous adaptant à vos besoins opérationnels.",
+      "step4Title": "Inspection de qualité",
+      "step4Desc": "Nous vérifions les résultats régulièrement pour maintenir nos standards.",
+      "step4Detail": "Des inspections régulières et des suivis garantissent que rien n'est négligé — vos locaux restent propres et professionnels."
+    },
+    "grid": {
+      "office": "Nettoyage de bureaux",
+      "officeDesc": "Nettoyage complet des espaces de travail, salles de réunion, toilettes, cuisines et aires communes. Nous gardons vos bureaux impeccables au quotidien.",
+      "officeInc1": "Désinfection des bureaux et surfaces",
+      "officeInc2": "Nettoyage en profondeur des toilettes",
+      "officeInc3": "Collecte des déchets et recyclage",
+      "janitorial": "Services de conciergerie",
+      "janitorialDesc": "Entretien continu des installations, y compris le réapprovisionnement, la gestion des déchets et l'entretien quotidien pour un environnement toujours propre.",
+      "janitorialInc1": "Réapprovisionnement des fournitures",
+      "janitorialInc2": "Gestion quotidienne des déchets",
+      "janitorialInc3": "Entretien des aires communes",
+      "disinfection": "Services de désinfection",
+      "disinfectionDesc": "Désinfection ciblée des surfaces à contact fréquent et des espaces partagés pour réduire la propagation des germes et favoriser des milieux de travail plus sains.",
+      "disinfectionInc1": "Traitement des surfaces à contact fréquent",
+      "disinfectionInc2": "Pulvérisation électrostatique disponible",
+      "disinfectionInc3": "Produits conformes aux normes sanitaires",
+      "floor": "Entretien des planchers",
+      "floorDesc": "Entretien professionnel des planchers, incluant le récurage, le cirage, le polissage et des programmes d'entretien à long terme pour tous les types de revêtements commerciaux.",
+      "floorInc1": "Décapage et cirage",
+      "floorInc2": "Récurage et polissage mécaniques",
+      "floorInc3": "Nettoyage des carreaux et des joints",
+      "carpet": "Nettoyage de tapis",
+      "carpetDesc": "Nettoyage par extraction en profondeur des tapis et meubles rembourrés pour éliminer les taches, les odeurs et la saleté incrustée.",
+      "carpetInc1": "Extraction à l'eau chaude",
+      "carpetInc2": "Traitement des taches",
+      "carpetInc3": "Nettoyage des tissus d'ameublement",
+      "postConstruction": "Nettoyage après construction",
+      "postConstructionDesc": "Nettoyage complet après des rénovations ou des travaux de construction : élimination de la poussière, ramassage des débris et finition détaillée.",
+      "postConstructionInc1": "Élimination de la poussière et des débris",
+      "postConstructionInc2": "Nettoyage des fenêtres et des surfaces",
+      "postConstructionInc3": "Finition et inspection finale",
+      "retail": "Nettoyage de commerces et zones achalandées",
+      "retailDesc": "Nettoyage spécialisé pour les magasins de détail, les halls d'entrée et les espaces commerciaux à fort achalandage où les premières impressions comptent.",
+      "retailInc1": "Entretien des entrées et des halls",
+      "retailInc2": "Dépoussiérage des présentoirs et des étagères",
+      "retailInc3": "Entretien des planchers à fort achalandage",
+      "includes": "Comprend"
+    },
+    "commitment": {
+      "title": "Notre engagement",
+      "point1": "Satisfaction garantie",
+      "point2": "Personnel formé et équipement professionnel",
+      "point3": "Inspections de qualité",
+      "point4": "Horaires flexibles",
+      "point5": "Communication fiable"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "q1": "À quelle fréquence mon entreprise devrait-elle être nettoyée?",
+      "a1": "Cela dépend de l'achalandage et de votre secteur d'activité. La plupart des espaces commerciaux profitent d'un nettoyage quotidien ou hebdomadaire. Nous pouvons vous aider à déterminer la fréquence idéale lors de l'évaluation des lieux.",
+      "q2": "Apportez-vous les produits et l'équipement?",
+      "a2": "Oui, nous apportons tous les produits de nettoyage et l'équipement professionnel nécessaires. Si vous avez des produits préférés ou des exigences particulières, nous nous adaptons avec plaisir.",
+      "q3": "Pouvez-vous travailler en dehors des heures d'ouverture?",
+      "a3": "Absolument. Nous offrons des horaires flexibles, y compris le soir, tôt le matin et les fins de semaine, afin de minimiser les perturbations de vos activités.",
+      "q4": "Vos services sont-ils personnalisables?",
+      "a4": "Oui, chaque plan de nettoyage est adapté à votre espace, vos besoins et votre budget. Nous travaillons avec vous pour élaborer un plan qui convient à votre entreprise.",
+      "q5": "Quelles surfaces désinfectez-vous?",
+      "a5": "Nous ciblons les surfaces à contact fréquent comme les poignées de porte, les interrupteurs, les boutons d'ascenseur, les bureaux partagés et les équipements de salle de bain. Nous pouvons aussi effectuer une désinfection complète des pièces au besoin.",
+      "q6": "Comment puis-je demander un service?",
+      "a6": "Il suffit de remplir notre formulaire de contact ou de nous appeler directement. Nous planifierons une évaluation des lieux et vous fournirons une soumission détaillée sans frais."
+    },
+    "ctaBanner": {
+      "title": "Prêt à commencer?",
+      "button": "Demander une soumission gratuite"
+    }
+  },
+  "blog": {
+    "title": "Conseils et nouvelles en nettoyage",
+    "subtitle": "Des conseils pratiques pour garder vos espaces commerciaux propres et professionnels.",
+    "search": "Rechercher un article...",
+    "allCategories": "Toutes les catégories",
+    "noResults": "Aucun article trouvé",
+    "noResultsDesc": "Revenez bientôt pour des conseils de nettoyage et des nouveautés, ou contactez-nous pour de l'aide immédiate.",
+    "readMore": "Lire la suite",
+    "relatedPosts": "Articles connexes",
+    "needHelp": "Besoin d'aide professionnelle?",
+    "needHelpDesc": "Notre équipe est prête à vous aider pour vos besoins en nettoyage.",
+    "contactUs": "Nous joindre",
+    "publishedOn": "Publié le"
+  },
+  "contact": {
+    "hero": {
+      "title": "Demander une soumission gratuite",
+      "subtitle": "Dites-nous ce dont vous avez besoin et nous vous contacterons dans les plus brefs délais."
+    },
+    "form": {
+      "name": "Nom complet",
+      "email": "Courriel",
+      "phone": "Téléphone",
+      "phoneHint": "Facultatif mais recommandé",
+      "companyName": "Nom de l'entreprise",
+      "companyNameHint": "Facultatif",
+      "serviceType": "Type de service",
+      "serviceTypeSelect": "Sélectionner un service",
+      "serviceOffice": "Nettoyage de bureaux",
+      "serviceJanitorial": "Services de conciergerie",
+      "serviceDisinfection": "Services de désinfection",
+      "serviceFloor": "Entretien des planchers",
+      "serviceCarpet": "Nettoyage de tapis",
+      "servicePostConstruction": "Nettoyage après construction",
+      "serviceRetail": "Nettoyage de commerces et zones achalandées",
+      "serviceOther": "Autre",
+      "requestedDate": "Date de service souhaitée",
+      "requestedDateHint": "Facultatif",
+      "addressLine1": "Adresse ligne 1",
+      "addressLine2": "Adresse ligne 2",
+      "city": "Ville",
+      "province": "Province / État",
+      "postalCode": "Code postal",
+      "contactTime": "Quand pouvons-nous vous joindre?",
+      "anytime": "N'importe quand",
+      "am": "AM (Matin)",
+      "pm": "PM (Après-midi)",
+      "message": "Message / Détails",
+      "consent": "J'accepte d'être contacté par Parras General Services concernant ma demande.",
+      "submit": "Envoyer la demande",
+      "submitting": "Envoi en cours...",
+      "success": "Merci! Nous avons reçu votre demande et vous contacterons sous peu.",
+      "error": "Une erreur est survenue. Veuillez réessayer.",
+      "required": "Ce champ est obligatoire.",
+      "invalidEmail": "Veuillez entrer une adresse courriel valide."
+    }
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour : février 2026",
+    "intro": "Parras General Services (« nous », « notre », « nos ») s'engage à protéger votre vie privée. Cette politique explique comment nous recueillons, utilisons et protégeons vos renseignements personnels conformément à la Loi sur la protection des renseignements personnels et les documents électroniques (LPRPDE) du Canada.",
+    "section1Title": "Renseignements que nous recueillons",
+    "section1Text": "Nous recueillons les renseignements personnels que vous fournissez volontairement lorsque vous remplissez notre formulaire de contact, y compris votre nom, adresse courriel, numéro de téléphone, nom d'entreprise, adresse et détails du message. Nous recueillons également des données d'utilisation de base par le biais de témoins pour améliorer votre expérience sur notre site.",
+    "section2Title": "Comment nous utilisons vos renseignements",
+    "section2Text": "Nous utilisons les renseignements que vous fournissez pour répondre à vos demandes, préparer des soumissions pour nos services et communiquer avec vous au sujet de nos services de nettoyage. Nous ne vendons, n'échangeons ni ne partageons vos renseignements personnels avec des tiers à des fins de marketing.",
+    "section3Title": "Témoins",
+    "section3Text": "Notre site utilise des témoins pour améliorer votre expérience de navigation. Les témoins essentiels sont nécessaires au fonctionnement du site. Les témoins analytiques nous aident à comprendre comment les visiteurs utilisent notre site. Vous pouvez gérer vos préférences de témoins à tout moment via les paramètres de témoins de notre site.",
+    "section4Title": "Sécurité des données",
+    "section4Text": "Nous mettons en place des mesures techniques et organisationnelles appropriées pour protéger vos renseignements personnels contre l'accès non autorisé, la modification, la divulgation ou la destruction.",
+    "section5Title": "Vos droits",
+    "section5Text": "En vertu de la LPRPDE, vous avez le droit d'accéder à vos renseignements personnels, de les corriger ou de les supprimer. Pour exercer ces droits, veuillez nous contacter aux coordonnées ci-dessous.",
+    "section6Title": "Nous joindre",
+    "section6Text": "Si vous avez des questions au sujet de cette politique de confidentialité ou de vos données personnelles, veuillez nous contacter à :"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "goHome": "Retour à l'accueil"
+  },
+  "whatsapp": {
+    "tooltip": "Clavardez avec nous sur WhatsApp",
+    "message": "Bonjour, je suis intéressé par vos services de nettoyage."
+  },
+  "backToTop": "Retour en haut"
+}
