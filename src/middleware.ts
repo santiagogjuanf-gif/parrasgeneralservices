@@ -8,9 +8,15 @@ export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const adminPath = process.env.ADMIN_PATH || '4831'
 
-  // Skip i18n for admin routes
+  // Rewrite admin routes: /4831/* -> /panel/*
   if (pathname.startsWith(`/${adminPath}`)) {
-    return NextResponse.next()
+    const newPath = pathname.replace(`/${adminPath}`, '/panel') || '/panel'
+    return NextResponse.rewrite(new URL(newPath, request.url))
+  }
+
+  // Block direct access to /panel
+  if (pathname.startsWith('/panel')) {
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   // Skip i18n for API routes

@@ -11,7 +11,18 @@
     "tagline": "Professional Cleaning & Maintenance",
     "mexicanOwned": "Mexican-owned in Canada",
     "copyright": "© 2026 Parras General Services. All rights reserved.",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "navigation": "Navigation",
+    "contactUs": "Contact Us",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "allRightsReserved": "All rights reserved."
   },
   "cookie": {
     "title": "We use cookies",

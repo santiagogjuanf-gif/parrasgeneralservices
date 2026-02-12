@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Montserrat, Inter } from 'next/font/google'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -9,18 +8,7 @@ import Footer from '@/components/layout/Footer'
 import CookieConsent from '@/components/layout/CookieConsent'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import BackToTop from '@/components/layout/BackToTop'
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-  display: 'swap',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
+import '../globals.css'
 
 export const metadata: Metadata = {
   title: {
@@ -46,8 +34,16 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={`${montserrat.variable} ${inter.variable}`}>
-      <body className={`${inter.className} antialiased`} style={{ backgroundColor: '#FFFFFF', color: '#0F172A' }}>
+    <html lang={locale}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased" style={{ backgroundColor: '#FFFFFF', color: '#0F172A', fontFamily: "'Inter', system-ui, sans-serif" }}>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           <main className="min-h-screen">

@@ -6,12 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "npx tsx prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
     "@next/font": "^14.2.15",
+    "@prisma/adapter-better-sqlite3": "^7.4.0",
     "@prisma/client": "^7.4.0",
+    "@types/better-sqlite3": "^7.6.13",
     "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.6.2",
     "framer-motion": "^12.34.0",
     "iron-session": "^8.0.4",
     "lucide-react": "^0.563.0",

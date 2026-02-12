@@ -11,7 +11,18 @@
     "tagline": "Limpieza y mantenimiento profesional",
     "mexicanOwned": "Empresa mexicana en Canadá",
     "copyright": "© 2026 Parras General Services. Todos los derechos reservados.",
-    "privacy": "Política de privacidad"
+    "privacy": "Política de privacidad",
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "navigation": "Navegación",
+    "contactUs": "Contáctanos",
+    "legal": "Legal",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio",
+    "allRightsReserved": "Todos los derechos reservados."
   },
   "cookie": {
     "title": "Usamos cookies",

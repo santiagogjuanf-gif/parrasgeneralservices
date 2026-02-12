@@ -11,7 +11,18 @@
     "tagline": "Nettoyage et entretien professionnels",
     "mexicanOwned": "Entreprise mexicaine au Canada",
     "copyright": "© 2026 Parras General Services. Tous droits réservés.",
-    "privacy": "Politique de confidentialité"
+    "privacy": "Politique de confidentialité",
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "blog": "Blogue",
+    "contact": "Contact",
+    "navigation": "Navigation",
+    "contactUs": "Nous joindre",
+    "legal": "Juridique",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "allRightsReserved": "Tous droits réservés."
   },
   "cookie": {
     "title": "Nous utilisons des témoins",
