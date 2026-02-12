@@ -1,7 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { MessageSquare, FileText, Eye, Clock } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { MessageSquare, FileText, Eye, Clock, TrendingUp } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useAdminLang } from './AdminDashboardShell'
+import { getTimeGreeting } from '@/lib/admin-i18n'
 
 interface Stats {
   totalContacts: number
@@ -10,10 +13,40 @@ interface Stats {
   publishedPosts: number
 }
 
-export default function AdminOverview() {
-  const [stats, setStats] = useState<Stats>({ totalContacts: 0, newContacts: 0, totalPosts: 0, publishedPosts: 0 })
+function AnimatedNumber({ value }: { value: number }) {
+  const [display, setDisplay] = useState(0)
+  const ref = useRef(0)
 
   useEffect(() => {
+    if (value === 0) return
+    const duration = 800
+    const start = ref.current
+    const diff = value - start
+    const startTime = performance.now()
+
+    const step = (now: number) => {
+      const elapsed = now - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      const current = Math.round(start + diff * eased)
+      setDisplay(current)
+      if (progress < 1) requestAnimationFrame(step)
+      else ref.current = value
+    }
+    requestAnimationFrame(step)
+  }, [value])
+
+  return <>{display}</>
+}
+
+export default function AdminOverview() {
+  const { lang, t } = useAdminLang()
+  const [stats, setStats] = useState<Stats>({ totalContacts: 0, newContacts: 0, totalPosts: 0, publishedPosts: 0 })
+  const [userName, setUserName] = useState('')
+
+  useEffect(() => {
+    fetch('/api/auth/me').then((r) => r.json()).then((d) => setUserName(d.fullName || '')).catch(() => {})
+
     Promise.all([
       fetch('/api/admin/contacts').then((r) => r.json()),
       fetch('/api/admin/blog').then((r) => r.json()),
@@ -28,34 +61,67 @@ export default function AdminOverview() {
   }, [])
 
   const cards = [
-    { label: 'Total Contacts', value: stats.totalContacts, icon: MessageSquare, color: '#0B7A3B', bg: '#E7F6ED' },
-    { label: 'New Contacts', value: stats.newContacts, icon: Clock, color: '#D4A11E', bg: '#FEF9E7' },
-    { label: 'Total Posts', value: stats.totalPosts, icon: FileText, color: '#2563EB', bg: '#EFF6FF' },
-    { label: 'Published', value: stats.publishedPosts, icon: Eye, color: '#7C3AED', bg: '#F5F3FF' },
+    { label: t('overview.totalContacts'), value: stats.totalContacts, icon: MessageSquare, gradient: 'linear-gradient(135deg, #0B7A3B, #10B981)', bg: '#F0FDF4' },
+    { label: t('overview.newContacts'), value: stats.newContacts, icon: Clock, gradient: 'linear-gradient(135deg, #D97706, #F59E0B)', bg: '#FFFBEB' },
+    { label: t('overview.totalPosts'), value: stats.totalPosts, icon: FileText, gradient: 'linear-gradient(135deg, #2563EB, #3B82F6)', bg: '#EFF6FF' },
+    { label: t('overview.published'), value: stats.publishedPosts, icon: Eye, gradient: 'linear-gradient(135deg, #7C3AED, #8B5CF6)', bg: '#F5F3FF' },
   ]
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {cards.map((card) => {
-        const Icon = card.icon
-        return (
-          <div
-            key={card.label}
-            className="rounded-xl border bg-white p-5"
-            style={{ borderColor: '#E2E8F0' }}
-          >
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ backgroundColor: card.bg }}>
-                <Icon size={20} style={{ color: card.color }} />
-              </div>
-              <div>
-                <p className="text-2xl font-bold" style={{ color: '#0F172A' }}>{card.value}</p>
-                <p className="text-xs" style={{ color: '#94A3B8' }}>{card.label}</p>
-              </div>
-            </div>
+    <div>
+      {/* Welcome section */}
+      <motion.div className="mb-8"
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}>
+        <div className="flex items-center gap-3">
+          <motion.div className="flex h-12 w-12 items-center justify-center rounded-xl"
+            style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
+            initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}>
+            <TrendingUp size={22} className="text-white" />
+          </motion.div>
+          <div>
+            <h2 className="text-2xl font-bold" style={{ color: '#0F172A' }}>
+              {getTimeGreeting(lang)}{userName ? `, ${userName.split(' ')[0]}` : ''}!
+            </h2>
+            <p className="text-sm" style={{ color: '#94A3B8' }}>
+              {t('overview.subtitle')}
+            </p>
           </div>
-        )
-      })}
+        </div>
+      </motion.div>
+
+      {/* Stats grid */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card, i) => {
+          const Icon = card.icon
+          return (
+            <motion.div key={card.label}
+              className="group relative overflow-hidden rounded-2xl border bg-white p-6"
+              style={{ borderColor: '#E2E8F0' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 + i * 0.1, duration: 0.4 }}
+              whileHover={{ y: -2, boxShadow: '0 8px 30px rgba(0,0,0,0.08)' }}>
+              {/* Gradient accent top */}
+              <div className="absolute inset-x-0 top-0 h-1 opacity-0 transition-opacity group-hover:opacity-100"
+                style={{ background: card.gradient }} />
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-sm font-medium" style={{ color: '#94A3B8' }}>{card.label}</p>
+                  <p className="mt-2 text-3xl font-bold" style={{ color: '#0F172A' }}>
+                    <AnimatedNumber value={card.value} />
+                  </p>
+                </div>
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl"
+                  style={{ backgroundColor: card.bg }}>
+                  <Icon size={20} style={{ color: card.gradient.includes('#0B7A3B') ? '#0B7A3B' : card.gradient.includes('#D97706') ? '#D97706' : card.gradient.includes('#2563EB') ? '#2563EB' : '#7C3AED' }} />
+                </div>
+              </div>
+            </motion.div>
+          )
+        })}
+      </div>
     </div>
   )
 }

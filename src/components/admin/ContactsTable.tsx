@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Trash2, ChevronDown } from 'lucide-react'
+import { Trash2, ChevronDown, Inbox } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useAdminLang } from './AdminDashboardShell'
 
 interface Contact {
   id: number
@@ -26,6 +28,7 @@ const statusColors: Record<string, { bg: string; text: string }> = {
 }
 
 export default function ContactsTable() {
+  const { t } = useAdminLang()
   const [contacts, setContacts] = useState<Contact[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -33,10 +36,7 @@ export default function ContactsTable() {
     setLoading(true)
     fetch('/api/admin/contacts')
       .then((r) => r.json())
-      .then((data) => {
-        setContacts(Array.isArray(data) ? data : [])
-        setLoading(false)
-      })
+      .then((data) => { setContacts(Array.isArray(data) ? data : []); setLoading(false) })
       .catch(() => setLoading(false))
   }
 
@@ -52,7 +52,7 @@ export default function ContactsTable() {
   }
 
   const deleteContact = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this contact?')) return
+    if (!confirm(t('contacts.deleteConfirm'))) return
     await fetch(`/api/admin/contacts/${id}`, { method: 'DELETE' })
     setContacts((prev) => prev.filter((c) => c.id !== id))
   }
@@ -60,55 +60,66 @@ export default function ContactsTable() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" style={{ borderColor: '#0B7A3B', borderTopColor: 'transparent' }} />
+        <motion.div className="h-8 w-8 rounded-lg"
+          style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} />
       </div>
     )
   }
 
   if (contacts.length === 0) {
     return (
-      <div className="rounded-xl border bg-white p-12 text-center" style={{ borderColor: '#E2E8F0' }}>
-        <p className="text-lg font-semibold" style={{ color: '#0F172A' }}>No contacts yet</p>
-        <p className="mt-1 text-sm" style={{ color: '#94A3B8' }}>Contact submissions will appear here.</p>
-      </div>
+      <motion.div className="rounded-2xl border bg-white p-16 text-center"
+        style={{ borderColor: '#E2E8F0' }}
+        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl"
+          style={{ backgroundColor: '#F0FDF4' }}>
+          <Inbox size={28} style={{ color: '#0B7A3B' }} />
+        </div>
+        <p className="text-lg font-semibold" style={{ color: '#0F172A' }}>{t('contacts.empty')}</p>
+        <p className="mt-1 text-sm" style={{ color: '#94A3B8' }}>{t('contacts.emptyDesc')}</p>
+      </motion.div>
     )
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border bg-white" style={{ borderColor: '#E2E8F0' }}>
+    <motion.div className="overflow-hidden rounded-2xl border bg-white shadow-sm"
+      style={{ borderColor: '#E2E8F0' }}
+      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead>
             <tr style={{ backgroundColor: '#F8FAFC' }}>
-              <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Name</th>
-              <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Email</th>
-              <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Service</th>
-              <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Status</th>
-              <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Date</th>
-              <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Actions</th>
+              <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('contacts.name')}</th>
+              <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('contacts.email')}</th>
+              <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('contacts.service')}</th>
+              <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('contacts.status')}</th>
+              <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('contacts.date')}</th>
+              <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('contacts.actions')}</th>
             </tr>
           </thead>
           <tbody>
-            {contacts.map((contact) => {
+            {contacts.map((contact, i) => {
               const sc = statusColors[contact.status] || statusColors.NEW
               return (
-                <tr key={contact.id} className="border-t" style={{ borderColor: '#F1F5F9' }}>
-                  <td className="px-4 py-3">
+                <motion.tr key={contact.id} className="border-t" style={{ borderColor: '#F1F5F9' }}
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                  transition={{ delay: i * 0.03 }}>
+                  <td className="px-5 py-3.5">
                     <p className="font-medium" style={{ color: '#0F172A' }}>{contact.name}</p>
                     {contact.companyName && (
                       <p className="text-xs" style={{ color: '#94A3B8' }}>{contact.companyName}</p>
                     )}
                   </td>
-                  <td className="px-4 py-3" style={{ color: '#334155' }}>{contact.email}</td>
-                  <td className="px-4 py-3" style={{ color: '#334155' }}>{contact.serviceType}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-5 py-3.5" style={{ color: '#334155' }}>{contact.email}</td>
+                  <td className="px-5 py-3.5" style={{ color: '#334155' }}>{contact.serviceType}</td>
+                  <td className="px-5 py-3.5">
                     <div className="relative inline-block">
-                      <select
-                        value={contact.status}
+                      <select value={contact.status}
                         onChange={(e) => updateStatus(contact.id, e.target.value)}
                         className="appearance-none rounded-full py-1 pl-3 pr-7 text-xs font-medium focus:outline-none"
-                        style={{ backgroundColor: sc.bg, color: sc.text }}
-                      >
+                        style={{ backgroundColor: sc.bg, color: sc.text }}>
                         {STATUS_OPTIONS.map((s) => (
                           <option key={s} value={s}>{s}</option>
                         ))}
@@ -116,24 +127,22 @@ export default function ContactsTable() {
                       <ChevronDown size={12} className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" style={{ color: sc.text }} />
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-xs" style={{ color: '#94A3B8' }}>
+                  <td className="px-5 py-3.5 text-xs" style={{ color: '#94A3B8' }}>
                     {new Date(contact.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="px-4 py-3">
-                    <button
-                      onClick={() => deleteContact(contact.id)}
-                      className="rounded-md p-1.5 transition-colors hover:bg-red-50"
-                      style={{ color: '#EF4444' }}
-                    >
+                  <td className="px-5 py-3.5">
+                    <button onClick={() => deleteContact(contact.id)}
+                      className="rounded-lg p-2 transition-colors hover:bg-red-50"
+                      style={{ color: '#EF4444' }}>
                       <Trash2 size={16} />
                     </button>
                   </td>
-                </tr>
+                </motion.tr>
               )
             })}
           </tbody>
         </table>
       </div>
-    </div>
+    </motion.div>
   )
 }

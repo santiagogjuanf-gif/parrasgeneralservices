@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { Plus, Pencil, Trash2, Eye, EyeOff } from 'lucide-react'
+import { Plus, Pencil, Trash2, Eye, EyeOff, FileText } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useAdminLang } from './AdminDashboardShell'
 
 interface Post {
   id: number
   slug: string
   titleEn: string
+  titleEs: string
   category: string
   status: string
   publishedAt: string | null
@@ -17,6 +20,7 @@ interface Post {
 export default function BlogTable() {
   const router = useRouter()
   const pathname = usePathname()
+  const { lang, t } = useAdminLang()
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -24,17 +28,14 @@ export default function BlogTable() {
     setLoading(true)
     fetch('/api/admin/blog')
       .then((r) => r.json())
-      .then((data) => {
-        setPosts(Array.isArray(data) ? data : [])
-        setLoading(false)
-      })
+      .then((data) => { setPosts(Array.isArray(data) ? data : []); setLoading(false) })
       .catch(() => setLoading(false))
   }
 
   useEffect(() => { fetchPosts() }, [])
 
   const deletePost = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this post?')) return
+    if (!confirm(t('blog.deleteConfirm'))) return
     await fetch(`/api/admin/blog/${id}`, { method: 'DELETE' })
     setPosts((prev) => prev.filter((p) => p.id !== id))
   }
@@ -46,101 +47,110 @@ export default function BlogTable() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: newStatus }),
     })
-    setPosts((prev) =>
-      prev.map((p) => (p.id === post.id ? { ...p, status: newStatus } : p))
-    )
+    setPosts((prev) => prev.map((p) => (p.id === post.id ? { ...p, status: newStatus } : p)))
+  }
+
+  const getTitle = (post: Post) => {
+    if (lang === 'es' && post.titleEs) return post.titleEs
+    return post.titleEn || post.slug
   }
 
   return (
     <div>
       <div className="mb-4 flex items-center justify-between">
-        <p className="text-sm" style={{ color: '#94A3B8' }}>{posts.length} posts</p>
-        <button
+        <p className="text-sm" style={{ color: '#94A3B8' }}>{posts.length} {t('blog.posts')}</p>
+        <motion.button
           onClick={() => router.push(`${pathname}/new`)}
-          className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
-          style={{ backgroundColor: '#0B7A3B' }}
-        >
-          <Plus size={16} />
-          New Post
-        </button>
+          className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl px-5 py-2.5 text-sm font-semibold text-white"
+          style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
+          whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+          <Plus size={16} className="relative" />
+          <span className="relative">{t('blog.newPost')}</span>
+        </motion.button>
       </div>
 
       {loading ? (
         <div className="flex justify-center py-20">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" style={{ borderColor: '#0B7A3B', borderTopColor: 'transparent' }} />
+          <motion.div className="h-8 w-8 rounded-lg"
+            style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} />
         </div>
       ) : posts.length === 0 ? (
-        <div className="rounded-xl border bg-white p-12 text-center" style={{ borderColor: '#E2E8F0' }}>
-          <p className="text-lg font-semibold" style={{ color: '#0F172A' }}>No blog posts yet</p>
-          <p className="mt-1 text-sm" style={{ color: '#94A3B8' }}>Create your first post to get started.</p>
-        </div>
+        <motion.div className="rounded-2xl border bg-white p-16 text-center"
+          style={{ borderColor: '#E2E8F0' }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl"
+            style={{ backgroundColor: '#EFF6FF' }}>
+            <FileText size={28} style={{ color: '#2563EB' }} />
+          </div>
+          <p className="text-lg font-semibold" style={{ color: '#0F172A' }}>{t('blog.empty')}</p>
+          <p className="mt-1 text-sm" style={{ color: '#94A3B8' }}>{t('blog.emptyDesc')}</p>
+        </motion.div>
       ) : (
-        <div className="overflow-hidden rounded-xl border bg-white" style={{ borderColor: '#E2E8F0' }}>
+        <motion.div className="overflow-hidden rounded-2xl border bg-white shadow-sm"
+          style={{ borderColor: '#E2E8F0' }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
                 <tr style={{ backgroundColor: '#F8FAFC' }}>
-                  <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Title</th>
-                  <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Category</th>
-                  <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Status</th>
-                  <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Date</th>
-                  <th className="px-4 py-3 font-medium" style={{ color: '#64748B' }}>Actions</th>
+                  <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('blog.titleCol')}</th>
+                  <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('blog.category')}</th>
+                  <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('blog.status')}</th>
+                  <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('blog.date')}</th>
+                  <th className="px-5 py-3.5 font-medium" style={{ color: '#64748B' }}>{t('blog.actions')}</th>
                 </tr>
               </thead>
               <tbody>
-                {posts.map((post) => (
-                  <tr key={post.id} className="border-t" style={{ borderColor: '#F1F5F9' }}>
-                    <td className="px-4 py-3">
-                      <p className="font-medium" style={{ color: '#0F172A' }}>{post.titleEn || post.slug}</p>
+                {posts.map((post, i) => (
+                  <motion.tr key={post.id} className="border-t" style={{ borderColor: '#F1F5F9' }}
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                    transition={{ delay: i * 0.03 }}>
+                    <td className="px-5 py-3.5">
+                      <p className="font-medium" style={{ color: '#0F172A' }}>{getTitle(post)}</p>
                       <p className="text-xs" style={{ color: '#94A3B8' }}>/{post.slug}</p>
                     </td>
-                    <td className="px-4 py-3" style={{ color: '#334155' }}>{post.category}</td>
-                    <td className="px-4 py-3">
-                      <span
-                        className="inline-block rounded-full px-3 py-1 text-xs font-medium"
+                    <td className="px-5 py-3.5" style={{ color: '#334155' }}>{post.category}</td>
+                    <td className="px-5 py-3.5">
+                      <span className="inline-block rounded-full px-3 py-1 text-xs font-medium"
                         style={{
                           backgroundColor: post.status === 'PUBLISHED' ? '#E7F6ED' : '#FEF9E7',
                           color: post.status === 'PUBLISHED' ? '#0B7A3B' : '#92400E',
-                        }}
-                      >
-                        {post.status}
+                        }}>
+                        {post.status === 'PUBLISHED' ? t('editor.published') : t('editor.draft')}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-xs" style={{ color: '#94A3B8' }}>
+                    <td className="px-5 py-3.5 text-xs" style={{ color: '#94A3B8' }}>
                       {new Date(post.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-5 py-3.5">
                       <div className="flex items-center gap-1">
-                        <button
-                          onClick={() => toggleStatus(post)}
-                          className="rounded-md p-1.5 transition-colors hover:bg-[#F6F8FA]"
-                          title={post.status === 'PUBLISHED' ? 'Unpublish' : 'Publish'}
-                          style={{ color: '#64748B' }}
-                        >
+                        <button onClick={() => toggleStatus(post)}
+                          className="rounded-lg p-2 transition-colors hover:bg-gray-100"
+                          title={post.status === 'PUBLISHED' ? t('blog.unpublish') : t('blog.publish')}
+                          style={{ color: '#64748B' }}>
                           {post.status === 'PUBLISHED' ? <EyeOff size={16} /> : <Eye size={16} />}
                         </button>
-                        <button
-                          onClick={() => router.push(`${pathname}/${post.id}/edit`)}
-                          className="rounded-md p-1.5 transition-colors hover:bg-[#F6F8FA]"
-                          style={{ color: '#64748B' }}
-                        >
+                        <button onClick={() => router.push(`${pathname}/${post.id}/edit`)}
+                          className="rounded-lg p-2 transition-colors hover:bg-gray-100"
+                          style={{ color: '#64748B' }}>
                           <Pencil size={16} />
                         </button>
-                        <button
-                          onClick={() => deletePost(post.id)}
-                          className="rounded-md p-1.5 transition-colors hover:bg-red-50"
-                          style={{ color: '#EF4444' }}
-                        >
+                        <button onClick={() => deletePost(post.id)}
+                          className="rounded-lg p-2 transition-colors hover:bg-red-50"
+                          style={{ color: '#EF4444' }}>
                           <Trash2 size={16} />
                         </button>
                       </div>
                     </td>
-                  </tr>
+                  </motion.tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   )
