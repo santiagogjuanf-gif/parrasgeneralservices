@@ -10,7 +10,7 @@ export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false)
 
   const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ''
-  const defaultMessage = t('defaultMessage')
+  const defaultMessage = t('message')
 
   const handleClick = () => {
     const encoded = encodeURIComponent(defaultMessage)
