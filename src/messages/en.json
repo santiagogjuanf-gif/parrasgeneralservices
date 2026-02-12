@@ -5,7 +5,8 @@
     "services": "Services",
     "blog": "Blog",
     "contact": "Contact",
-    "freeQuote": "Free Quote"
+    "freeQuote": "Free Quote",
+    "language": "Language"
   },
   "footer": {
     "tagline": "Professional Cleaning & Maintenance",
@@ -36,7 +37,11 @@
     "analyticsDesc": "Help us understand how visitors use our website.",
     "marketing": "Marketing",
     "marketingDesc": "Used to deliver relevant advertisements.",
-    "save": "Save Preferences"
+    "save": "Save Preferences",
+    "close": "Close",
+    "alwaysOn": "Always on",
+    "managePreferences": "Manage Preferences",
+    "savePreferences": "Save Preferences"
   },
   "home": {
     "hero": {

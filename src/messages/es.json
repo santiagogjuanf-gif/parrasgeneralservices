@@ -5,7 +5,8 @@
     "services": "Servicios",
     "blog": "Blog",
     "contact": "Contacto",
-    "freeQuote": "Cotización gratis"
+    "freeQuote": "Cotización gratis",
+    "language": "Idioma"
   },
   "footer": {
     "tagline": "Limpieza y mantenimiento profesional",
@@ -36,7 +37,11 @@
     "analyticsDesc": "Nos ayudan a entender cómo los visitantes usan nuestro sitio.",
     "marketing": "Marketing",
     "marketingDesc": "Se utilizan para mostrar anuncios relevantes.",
-    "save": "Guardar preferencias"
+    "save": "Guardar preferencias",
+    "close": "Cerrar",
+    "alwaysOn": "Siempre activo",
+    "managePreferences": "Administrar preferencias",
+    "savePreferences": "Guardar preferencias"
   },
   "home": {
     "hero": {

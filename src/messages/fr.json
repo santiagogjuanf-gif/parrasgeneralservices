@@ -5,7 +5,8 @@
     "services": "Services",
     "blog": "Blogue",
     "contact": "Contact",
-    "freeQuote": "Soumission gratuite"
+    "freeQuote": "Soumission gratuite",
+    "language": "Langue"
   },
   "footer": {
     "tagline": "Nettoyage et entretien professionnels",
@@ -36,7 +37,11 @@
     "analyticsDesc": "Nous aident à comprendre comment les visiteurs utilisent notre site.",
     "marketing": "Marketing",
     "marketingDesc": "Utilisés pour afficher des publicités pertinentes.",
-    "save": "Enregistrer les préférences"
+    "save": "Enregistrer les préférences",
+    "close": "Fermer",
+    "alwaysOn": "Toujours actif",
+    "managePreferences": "Gérer les préférences",
+    "savePreferences": "Enregistrer les préférences"
   },
   "home": {
     "hero": {
