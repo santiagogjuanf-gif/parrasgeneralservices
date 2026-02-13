@@ -76,7 +76,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               <li>
                 <a
-                  href="tel:+1-000-000-0000"
+                  href="tel:+1 (519) 385-5713"
                   className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white"
                   style={{ color: '#94A3B8' }}
                 >
