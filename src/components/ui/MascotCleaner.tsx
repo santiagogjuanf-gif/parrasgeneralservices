@@ -52,7 +52,7 @@ export default function MascotCleaner() {
             <motion.div
               key={i}
               className="absolute"
-              style={{ top: `${35 + i * 8}%` }}
+              style={{ top: `${40 + i * 5}%` }}
               initial={{ left: '-5%', opacity: 0 }}
               animate={{ left: '105%', opacity: [0, 1, 1, 0] }}
               transition={{
@@ -72,10 +72,10 @@ export default function MascotCleaner() {
             </motion.div>
           ))}
 
-          {/* Mascot character moving left to right */}
+          {/* Mascot character moving left to right — centered vertically */}
           <motion.div
             className="absolute"
-            style={{ bottom: '10%', width: 220, height: 220 }}
+            style={{ top: '50%', marginTop: -110, width: 220, height: 220 }}
             initial={{ left: '-250px' }}
             animate={{ left: 'calc(100% + 50px)' }}
             transition={{ duration: 4, ease: 'easeInOut' }}

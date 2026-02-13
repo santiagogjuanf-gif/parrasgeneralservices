@@ -130,9 +130,23 @@ export default function Footer() {
           className="mt-10 border-t pt-6"
           style={{ borderColor: '#1E293B' }}
         >
-          <p className="text-center text-sm" style={{ color: '#64748B' }}>
-            &copy; {year} Parras General Services. {t('allRightsReserved')}
-          </p>
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-between">
+            <p className="text-sm" style={{ color: '#64748B' }}>
+              &copy; {year} Parras General Services&trade;. {t('allRightsReserved')}
+            </p>
+            <p className="text-sm" style={{ color: '#64748B' }}>
+              {t('designedBy')}{' '}
+              <a
+                href="https://www.cerberusdev.pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:underline"
+                style={{ color: '#94A3B8' }}
+              >
+                Cerberus Dev
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
