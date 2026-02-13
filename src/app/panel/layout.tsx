@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import '../globals.css'
 
 export const metadata: Metadata = {
   title: 'Admin | Parras General Services',
@@ -12,7 +13,15 @@ export default function PanelLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, fontFamily: "'Inter', system-ui, sans-serif", backgroundColor: '#F8FAFC' }}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased" style={{ margin: 0, fontFamily: "'Inter', system-ui, sans-serif", backgroundColor: '#F8FAFC' }}>
         {children}
       </body>
     </html>

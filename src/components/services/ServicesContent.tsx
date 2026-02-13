@@ -16,6 +16,8 @@ import {
   Sofa,
   HardHat,
   Store,
+  GlassWater,
+  Droplets,
   ChevronDown,
 } from 'lucide-react'
 import AnimatedSection from '@/components/ui/AnimatedSection'
@@ -39,6 +41,8 @@ const services = [
   { key: 'carpet', icon: Sofa },
   { key: 'postConstruction', icon: HardHat },
   { key: 'retail', icon: Store },
+  { key: 'windowCleaning', icon: GlassWater },
+  { key: 'powerWashing', icon: Droplets },
 ] as const
 
 const commitmentPoints = ['point1', 'point2', 'point3', 'point4', 'point5'] as const

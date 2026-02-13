@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
-import { Building2, Shield, Layers, HardHat, Armchair, Store } from 'lucide-react'
+import { Building2, Shield, Layers, HardHat, Armchair, Store, GlassWater, Droplets } from 'lucide-react'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 
 const services = [
@@ -12,6 +12,8 @@ const services = [
   { key: 'postConstruction', Icon: HardHat },
   { key: 'carpet', Icon: Armchair },
   { key: 'retail', Icon: Store },
+  { key: 'windowCleaning', Icon: GlassWater },
+  { key: 'powerWashing', Icon: Droplets },
 ] as const
 
 export default function ServicesPreview() {

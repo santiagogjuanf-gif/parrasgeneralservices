@@ -10,7 +10,7 @@
   },
   "footer": {
     "tagline": "Nettoyage et entretien professionnels",
-    "mexicanOwned": "Entreprise mexicaine au Canada",
+    "mexicanOwned": "Au service du Canada avec fierté",
     "copyright": "© 2026 Parras General Services. Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "home": "Accueil",
@@ -46,7 +46,7 @@
   "home": {
     "hero": {
       "title": "Un nettoyage commercial à la hauteur de votre image",
-      "subtitle": "Entreprise mexicaine au Canada. Des espaces propres, des résultats constants et des standards de confiance.",
+      "subtitle": "Des espaces propres, des résultats constants et des standards de confiance.",
       "cta": "Obtenir une soumission gratuite",
       "secondary": "Découvrir nos services"
     },
@@ -80,7 +80,11 @@
       "carpet": "Tapis et tissus d'ameublement",
       "carpetDesc": "Nettoyage en profondeur qui ravive vos tapis et surfaces en tissu.",
       "retail": "Commerce de détail et zones achalandées",
-      "retailDesc": "Un nettoyage constant là où les premières impressions comptent le plus."
+      "retailDesc": "Un nettoyage constant là où les premières impressions comptent le plus.",
+      "windowCleaning": "Nettoyage de vitres",
+      "windowCleaningDesc": "Nettoyage de vitres intérieures et extérieures pour un fini cristallin sans traces.",
+      "powerWashing": "Lavage à pression",
+      "powerWashingDesc": "Nettoyage haute pression pour façades, trottoirs et stationnements."
     },
     "whyChoose": {
       "title": "Pourquoi choisir Parras",
@@ -88,7 +92,7 @@
       "point2": "Listes de vérification rigoureuses et contrôle de la qualité.",
       "point3": "Horaires flexibles (jour, soir ou en dehors des heures d'ouverture).",
       "point4": "Équipement professionnel et produits sécuritaires.",
-      "point5": "Fondée en 2022 avec fierté, discipline et souci du détail."
+      "point5": "Fondée en 2019 avec fierté, discipline et souci du détail."
     },
     "cta": {
       "title": "Prêt pour des locaux plus propres et plus professionnels?",
@@ -98,11 +102,11 @@
   "about": {
     "hero": {
       "title": "À propos de Parras General Services",
-      "subtitle": "Une entreprise de nettoyage mexicaine au Canada, bâtie sur la fiabilité et la fierté."
+      "subtitle": "Une entreprise de nettoyage bâtie sur la fiabilité, le dévouement et la fierté."
     },
     "whoWeAre": {
       "title": "Qui nous sommes",
-      "text": "Parras General Services offre des services de nettoyage et d'entretien commercial avec un objectif simple : bien faire le travail, à temps, avec des résultats visibles.\n\nFondée en 2022 par un ami qui a démarré l'entreprise seul, Parras est passée d'un effort individuel à une équipe engagée, axée sur la qualité, la constance et le respect de chaque espace que nous entretenons. Aujourd'hui, nous aidons les entreprises à maintenir des environnements propres, sécuritaires et professionnels, appuyés par des processus clairs et une communication directe."
+      "text": "Parras General Services offre des services de nettoyage et d'entretien commercial avec un objectif simple : bien faire le travail, à temps, avec des résultats visibles.\n\nFondée en 2019 par un ami qui a démarré l'entreprise seul, Parras est passée d'un effort individuel à une équipe engagée, axée sur la qualité, la constance et le respect de chaque espace que nous entretenons. Aujourd'hui, nous aidons les entreprises à maintenir des environnements propres, sécuritaires et professionnels, appuyés par des processus clairs et une communication directe."
     },
     "mission": {
       "title": "Notre mission",
@@ -127,7 +131,7 @@
     },
     "different": {
       "title": "Bâtie avec fierté, maintenue avec rigueur",
-      "text": "Notre identité est fièrement mexicaine, et nos standards sont conçus pour les entreprises canadiennes : des processus structurés, des horaires fiables et des contrôles de qualité qui protègent votre image de marque."
+      "text": "Nos standards sont conçus pour les entreprises canadiennes : des processus structurés, des horaires fiables et des contrôles de qualité qui protègent votre image de marque."
     }
   },
   "services": {
@@ -193,6 +197,16 @@
       "retailInc1": "Entretien des entrées et des halls",
       "retailInc2": "Dépoussiérage des présentoirs et des étagères",
       "retailInc3": "Entretien des planchers à fort achalandage",
+      "windowCleaning": "Nettoyage de vitres",
+      "windowCleaningDesc": "Nettoyage professionnel de vitres intérieures et extérieures pour immeubles commerciaux, devantures et bureaux — des résultats impeccables sans traces.",
+      "windowCleaningInc1": "Nettoyage de vitres intérieures et extérieures",
+      "windowCleaningInc2": "Détail des cadres et rebords",
+      "windowCleaningInc3": "Élimination des dépôts de calcaire",
+      "powerWashing": "Lavage à pression",
+      "powerWashingDesc": "Nettoyage haute pression des façades, trottoirs, stationnements et quais de chargement pour éliminer la saleté, la moisissure et les dépôts accumulés.",
+      "powerWashingInc1": "Nettoyage des façades et extérieurs",
+      "powerWashingInc2": "Lavage des trottoirs et stationnements",
+      "powerWashingInc3": "Élimination des graisses et taches",
       "includes": "Comprend"
     },
     "commitment": {
@@ -258,6 +272,8 @@
       "serviceCarpet": "Nettoyage de tapis",
       "servicePostConstruction": "Nettoyage après construction",
       "serviceRetail": "Nettoyage de commerces et zones achalandées",
+      "serviceWindowCleaning": "Nettoyage de vitres",
+      "servicePowerWashing": "Lavage à pression",
       "serviceOther": "Autre",
       "requestedDate": "Date de service souhaitée",
       "requestedDateHint": "Facultatif",

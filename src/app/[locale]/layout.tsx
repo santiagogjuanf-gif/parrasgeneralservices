@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: 'Parras General Services | Commercial Cleaning in Canada',
     template: '%s | Parras General Services',
   },
-  description: 'Professional commercial cleaning and maintenance services. Mexican-owned in Canada. Office cleaning, disinfection, floor care, and more.',
+  description: 'Professional commercial cleaning and maintenance services in Canada. Office cleaning, disinfection, floor care, and more.',
   keywords: ['commercial cleaning', 'office cleaning', 'janitorial services', 'Canada', 'cleaning company'],
 }
 

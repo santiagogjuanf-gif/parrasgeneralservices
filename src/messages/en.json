@@ -10,7 +10,7 @@
   },
   "footer": {
     "tagline": "Professional Cleaning & Maintenance",
-    "mexicanOwned": "Mexican-owned in Canada",
+    "mexicanOwned": "Proudly serving Canada",
     "copyright": "© 2026 Parras General Services. All rights reserved.",
     "privacy": "Privacy Policy",
     "home": "Home",
@@ -46,7 +46,7 @@
   "home": {
     "hero": {
       "title": "Commercial Cleaning That Looks Professional",
-      "subtitle": "Mexican-owned in Canada. Clean spaces, consistent results, and standards you can trust.",
+      "subtitle": "Clean spaces, consistent results, and standards you can trust.",
       "cta": "Get a Free Quote",
       "secondary": "Explore Services"
     },
@@ -80,7 +80,11 @@
       "carpet": "Carpet & Upholstery",
       "carpetDesc": "Deep cleaning that refreshes carpets and fabric surfaces.",
       "retail": "Retail & High-Traffic Areas",
-      "retailDesc": "Consistent cleaning where first impressions matter most."
+      "retailDesc": "Consistent cleaning where first impressions matter most.",
+      "windowCleaning": "Window Cleaning",
+      "windowCleaningDesc": "Interior and exterior window cleaning for a streak-free, crystal-clear finish.",
+      "powerWashing": "Power Washing",
+      "powerWashingDesc": "High-pressure cleaning for exteriors, sidewalks, and parking areas."
     },
     "whyChoose": {
       "title": "Why Choose Parras",
@@ -88,7 +92,7 @@
       "point2": "Consistent checklists and quality control.",
       "point3": "Flexible scheduling (day, evening, or after-hours).",
       "point4": "Professional equipment and safe products.",
-      "point5": "Built in 2022 with pride, discipline, and attention to detail."
+      "point5": "Built in 2019 with pride, discipline, and attention to detail."
     },
     "cta": {
       "title": "Ready for a cleaner, better-looking business?",
@@ -98,11 +102,11 @@
   "about": {
     "hero": {
       "title": "About Parras General Services",
-      "subtitle": "A Mexican-owned cleaning company in Canada, built on reliability and pride."
+      "subtitle": "A cleaning company built on reliability, dedication, and pride."
     },
     "whoWeAre": {
       "title": "Who We Are",
-      "text": "Parras General Services delivers commercial cleaning and maintenance with a simple goal: do the job right, on time, and with results you can see.\n\nFounded in 2022 by a friend who started the company alone, Parras grew from one-person dedication into a committed team focused on quality, consistency, and respect for every space we serve. Today we help businesses keep their environments clean, safe, and professional—supported by clear processes and direct communication."
+      "text": "Parras General Services delivers commercial cleaning and maintenance with a simple goal: do the job right, on time, and with results you can see.\n\nFounded in 2019 by a friend who started the company alone, Parras grew from one-person dedication into a committed team focused on quality, consistency, and respect for every space we serve. Today we help businesses keep their environments clean, safe, and professional—supported by clear processes and direct communication."
     },
     "mission": {
       "title": "Our Mission",
@@ -127,7 +131,7 @@
     },
     "different": {
       "title": "Built with Pride, Maintained with Standards",
-      "text": "Our identity is proudly Mexican, and our standards are built for Canadian businesses: structured processes, reliable scheduling, and quality checks that protect your brand image."
+      "text": "Our standards are built for Canadian businesses: structured processes, reliable scheduling, and quality checks that protect your brand image."
     }
   },
   "services": {
@@ -193,6 +197,16 @@
       "retailInc1": "Entrance and lobby maintenance",
       "retailInc2": "Display and shelf dusting",
       "retailInc3": "Floor care for heavy foot traffic",
+      "windowCleaning": "Window Cleaning",
+      "windowCleaningDesc": "Professional interior and exterior window cleaning for commercial buildings, storefronts, and office spaces—streak-free results every time.",
+      "windowCleaningInc1": "Interior and exterior glass cleaning",
+      "windowCleaningInc2": "Frame and sill detailing",
+      "windowCleaningInc3": "Hard water stain removal",
+      "powerWashing": "Power Washing",
+      "powerWashingDesc": "High-pressure cleaning for building exteriors, sidewalks, parking areas, and loading docks that removes grime, mold, and built-up dirt.",
+      "powerWashingInc1": "Building exterior and facade cleaning",
+      "powerWashingInc2": "Sidewalk and parking lot washing",
+      "powerWashingInc3": "Grease and stain removal",
       "includes": "Includes"
     },
     "commitment": {
@@ -258,6 +272,8 @@
       "serviceCarpet": "Carpet Cleaning",
       "servicePostConstruction": "Post-Construction Cleaning",
       "serviceRetail": "Retail & High-Traffic Cleaning",
+      "serviceWindowCleaning": "Window Cleaning",
+      "servicePowerWashing": "Power Washing",
       "serviceOther": "Other",
       "requestedDate": "Requested Service Date",
       "requestedDateHint": "Optional",

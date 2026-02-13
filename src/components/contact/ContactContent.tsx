@@ -171,6 +171,8 @@ export default function ContactContent() {
     { value: 'carpet', label: t('form.serviceCarpet') },
     { value: 'post-construction', label: t('form.servicePostConstruction') },
     { value: 'retail', label: t('form.serviceRetail') },
+    { value: 'window-cleaning', label: t('form.serviceWindowCleaning') },
+    { value: 'power-washing', label: t('form.servicePowerWashing') },
     { value: 'other', label: t('form.serviceOther') },
   ]
 

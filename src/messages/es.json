@@ -10,7 +10,7 @@
   },
   "footer": {
     "tagline": "Limpieza y mantenimiento profesional",
-    "mexicanOwned": "Empresa mexicana en Canadá",
+    "mexicanOwned": "Sirviendo con orgullo en Canadá",
     "copyright": "© 2026 Parras General Services. Todos los derechos reservados.",
     "privacy": "Política de privacidad",
     "home": "Inicio",
@@ -46,7 +46,7 @@
   "home": {
     "hero": {
       "title": "Limpieza comercial con imagen profesional",
-      "subtitle": "Empresa mexicana en Canadá. Espacios limpios, resultados constantes y estándares en los que puedes confiar.",
+      "subtitle": "Espacios limpios, resultados constantes y estándares en los que puedes confiar.",
       "cta": "Solicita una cotización gratis",
       "secondary": "Explorar servicios"
     },
@@ -80,7 +80,11 @@
       "carpet": "Alfombras y tapicería",
       "carpetDesc": "Limpieza profunda que renueva alfombras y superficies de tela.",
       "retail": "Comercios y áreas de alto tráfico",
-      "retailDesc": "Limpieza constante donde las primeras impresiones son las que más importan."
+      "retailDesc": "Limpieza constante donde las primeras impresiones son las que más importan.",
+      "windowCleaning": "Limpieza de ventanas",
+      "windowCleaningDesc": "Limpieza de ventanas interiores y exteriores para un acabado cristalino sin manchas.",
+      "powerWashing": "Lavado a presión",
+      "powerWashingDesc": "Limpieza a alta presión para exteriores, banquetas y estacionamientos."
     },
     "whyChoose": {
       "title": "Por qué elegir Parras",
@@ -88,7 +92,7 @@
       "point2": "Listas de verificación y control de calidad constantes.",
       "point3": "Horarios flexibles (día, noche o fuera de horario).",
       "point4": "Equipo profesional y productos seguros.",
-      "point5": "Fundada en 2022 con orgullo, disciplina y atención al detalle."
+      "point5": "Fundada en 2019 con orgullo, disciplina y atención al detalle."
     },
     "cta": {
       "title": "¿Listo para un negocio más limpio y profesional?",
@@ -98,11 +102,11 @@
   "about": {
     "hero": {
       "title": "Acerca de Parras General Services",
-      "subtitle": "Una empresa de limpieza mexicana en Canadá, construida sobre la confiabilidad y el orgullo."
+      "subtitle": "Una empresa de limpieza construida sobre la confiabilidad, la dedicación y el orgullo."
     },
     "whoWeAre": {
       "title": "Quiénes somos",
-      "text": "Parras General Services ofrece servicios de limpieza y mantenimiento comercial con un objetivo simple: hacer bien el trabajo, a tiempo y con resultados visibles.\n\nFundada en 2022 por un amigo que inició la empresa solo, Parras creció de la dedicación de una sola persona a un equipo comprometido, enfocado en la calidad, la constancia y el respeto por cada espacio que atendemos. Hoy ayudamos a las empresas a mantener sus ambientes limpios, seguros y profesionales, respaldados por procesos claros y comunicación directa."
+      "text": "Parras General Services ofrece servicios de limpieza y mantenimiento comercial con un objetivo simple: hacer bien el trabajo, a tiempo y con resultados visibles.\n\nFundada en 2019 por un amigo que inició la empresa solo, Parras creció de la dedicación de una sola persona a un equipo comprometido, enfocado en la calidad, la constancia y el respeto por cada espacio que atendemos. Hoy ayudamos a las empresas a mantener sus ambientes limpios, seguros y profesionales, respaldados por procesos claros y comunicación directa."
     },
     "mission": {
       "title": "Nuestra misión",
@@ -127,7 +131,7 @@
     },
     "different": {
       "title": "Construida con orgullo, mantenida con estándares",
-      "text": "Nuestra identidad es orgullosamente mexicana, y nuestros estándares están diseñados para empresas canadienses: procesos estructurados, horarios confiables y controles de calidad que protegen la imagen de tu marca."
+      "text": "Nuestros estándares están diseñados para empresas canadienses: procesos estructurados, horarios confiables y controles de calidad que protegen la imagen de tu marca."
     }
   },
   "services": {
@@ -193,6 +197,16 @@
       "retailInc1": "Mantenimiento de entradas y vestíbulos",
       "retailInc2": "Limpieza de exhibidores y estantes",
       "retailInc3": "Cuidado de pisos con alto tránsito",
+      "windowCleaning": "Limpieza de ventanas",
+      "windowCleaningDesc": "Limpieza profesional de ventanas interiores y exteriores para edificios comerciales, fachadas y oficinas — resultados impecables sin manchas.",
+      "windowCleaningInc1": "Limpieza de cristales interiores y exteriores",
+      "windowCleaningInc2": "Detallado de marcos y repisas",
+      "windowCleaningInc3": "Eliminación de manchas de agua dura",
+      "powerWashing": "Lavado a presión",
+      "powerWashingDesc": "Limpieza a alta presión para exteriores de edificios, banquetas, estacionamientos y muelles de carga que elimina mugre, moho y suciedad acumulada.",
+      "powerWashingInc1": "Limpieza de exteriores y fachadas",
+      "powerWashingInc2": "Lavado de banquetas y estacionamientos",
+      "powerWashingInc3": "Eliminación de grasa y manchas",
       "includes": "Incluye"
     },
     "commitment": {
@@ -258,6 +272,8 @@
       "serviceCarpet": "Limpieza de alfombras",
       "servicePostConstruction": "Limpieza post-construcción",
       "serviceRetail": "Limpieza de comercios y áreas de alto tráfico",
+      "serviceWindowCleaning": "Limpieza de ventanas",
+      "servicePowerWashing": "Lavado a presión",
       "serviceOther": "Otro",
       "requestedDate": "Fecha de servicio deseada",
       "requestedDateHint": "Opcional",
