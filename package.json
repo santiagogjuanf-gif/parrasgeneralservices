@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port ${LOCAL_PORT:-3000}",
+    "dev": "node scripts/start.mjs dev",
     "build": "next build",
-    "start": "next start --port ${LOCAL_PORT:-3000}",
+    "start": "node scripts/start.mjs start",
     "lint": "eslint",
     "seed": "npx tsx prisma/seed.ts"
   },
