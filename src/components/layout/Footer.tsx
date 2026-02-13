@@ -81,7 +81,7 @@ export default function Footer() {
                   style={{ color: '#94A3B8' }}
                 >
                   <Phone size={14} />
-                  +1 (000) 000-0000
+                  +1 (519) 385-5713
                 </a>
               </li>
               <li>

@@ -2,7 +2,7 @@ import { readFileSync } from 'fs'
 import { execSync } from 'child_process'
 
 // Read LOCAL_PORT from .env (no extra dependencies needed)
-let port = 3000
+let port = 3010
 try {
   const env = readFileSync('.env', 'utf8')
   const match = env.match(/^LOCAL_PORT=(\d+)/m)
