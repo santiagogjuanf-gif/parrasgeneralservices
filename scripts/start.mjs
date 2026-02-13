@@ -1,12 +1,20 @@
 import { readFileSync } from 'fs'
 import { execSync } from 'child_process'
 
-// Read LOCAL_PORT from .env (no extra dependencies needed)
+// Read LOCAL_PORT from .env (handles Windows CRLF, quotes, spaces)
 let port = 3000
 try {
   const env = readFileSync('.env', 'utf8')
-  const match = env.match(/^LOCAL_PORT=(\d+)/m)
-  if (match) port = Number(match[1])
+  for (const rawLine of env.split(/\r?\n/)) {
+    const line = rawLine.trim()
+    if (line.startsWith('LOCAL_PORT')) {
+      const value = line.split('=')[1]?.trim().replace(/^["']|["']$/g, '')
+      if (value && /^\d+$/.test(value)) {
+        port = Number(value)
+      }
+      break
+    }
+  }
 } catch {
   // .env not found — use default port
 }
