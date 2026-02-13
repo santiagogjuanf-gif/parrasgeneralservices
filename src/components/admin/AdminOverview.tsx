@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { MessageSquare, FileText, Eye, Clock, TrendingUp } from 'lucide-react'
+import { useRouter, usePathname } from 'next/navigation'
+import { MessageSquare, FileText, Eye, Clock, Users, TrendingUp } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useAdminLang } from './AdminDashboardShell'
 import { getTimeGreeting } from '@/lib/admin-i18n'
@@ -11,6 +12,7 @@ interface Stats {
   newContacts: number
   totalPosts: number
   publishedPosts: number
+  totalUsers: number
 }
 
 function AnimatedNumber({ value }: { value: number }) {
@@ -41,7 +43,10 @@ function AnimatedNumber({ value }: { value: number }) {
 
 export default function AdminOverview() {
   const { lang, t } = useAdminLang()
-  const [stats, setStats] = useState<Stats>({ totalContacts: 0, newContacts: 0, totalPosts: 0, publishedPosts: 0 })
+  const router = useRouter()
+  const pathname = usePathname()
+  const adminBase = pathname.replace(/\/dashboard.*/, '')
+  const [stats, setStats] = useState<Stats>({ totalContacts: 0, newContacts: 0, totalPosts: 0, publishedPosts: 0, totalUsers: 0 })
   const [userName, setUserName] = useState('')
 
   useEffect(() => {
@@ -50,21 +55,24 @@ export default function AdminOverview() {
     Promise.all([
       fetch('/api/admin/contacts').then((r) => r.json()),
       fetch('/api/admin/blog').then((r) => r.json()),
-    ]).then(([contacts, posts]) => {
+      fetch('/api/admin/users').then((r) => r.json()),
+    ]).then(([contacts, posts, users]) => {
       setStats({
         totalContacts: Array.isArray(contacts) ? contacts.length : 0,
         newContacts: Array.isArray(contacts) ? contacts.filter((c: { status: string }) => c.status === 'NEW').length : 0,
         totalPosts: Array.isArray(posts) ? posts.length : 0,
         publishedPosts: Array.isArray(posts) ? posts.filter((p: { status: string }) => p.status === 'PUBLISHED').length : 0,
+        totalUsers: Array.isArray(users) ? users.length : 0,
       })
     })
   }, [])
 
   const cards = [
-    { label: t('overview.totalContacts'), value: stats.totalContacts, icon: MessageSquare, gradient: 'linear-gradient(135deg, #0B7A3B, #10B981)', bg: '#F0FDF4' },
-    { label: t('overview.newContacts'), value: stats.newContacts, icon: Clock, gradient: 'linear-gradient(135deg, #D97706, #F59E0B)', bg: '#FFFBEB' },
-    { label: t('overview.totalPosts'), value: stats.totalPosts, icon: FileText, gradient: 'linear-gradient(135deg, #2563EB, #3B82F6)', bg: '#EFF6FF' },
-    { label: t('overview.published'), value: stats.publishedPosts, icon: Eye, gradient: 'linear-gradient(135deg, #7C3AED, #8B5CF6)', bg: '#F5F3FF' },
+    { label: t('overview.totalContacts'), value: stats.totalContacts, icon: MessageSquare, gradient: 'linear-gradient(135deg, #0B7A3B, #10B981)', bg: '#F0FDF4', href: `${adminBase}/dashboard/contacts` },
+    { label: t('overview.newContacts'), value: stats.newContacts, icon: Clock, gradient: 'linear-gradient(135deg, #D97706, #F59E0B)', bg: '#FFFBEB', href: `${adminBase}/dashboard/contacts` },
+    { label: t('overview.totalPosts'), value: stats.totalPosts, icon: FileText, gradient: 'linear-gradient(135deg, #2563EB, #3B82F6)', bg: '#EFF6FF', href: `${adminBase}/dashboard/blog` },
+    { label: t('overview.published'), value: stats.publishedPosts, icon: Eye, gradient: 'linear-gradient(135deg, #7C3AED, #8B5CF6)', bg: '#F5F3FF', href: `${adminBase}/dashboard/blog` },
+    { label: t('overview.totalUsers'), value: stats.totalUsers, icon: Users, gradient: 'linear-gradient(135deg, #0891B2, #06B6D4)', bg: '#ECFEFF', href: `${adminBase}/dashboard/users` },
   ]
 
   return (
@@ -92,12 +100,13 @@ export default function AdminOverview() {
       </motion.div>
 
       {/* Stats grid */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {cards.map((card, i) => {
           const Icon = card.icon
           return (
             <motion.div key={card.label}
-              className="group relative overflow-hidden rounded-2xl border bg-white p-6"
+              onClick={() => router.push(card.href)}
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border bg-white p-6"
               style={{ borderColor: '#E2E8F0' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

@@ -313,6 +313,25 @@
     "section6Title": "Contact Us",
     "section6Text": "If you have questions about this privacy policy or your personal data, please contact us at:"
   },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: February 2026",
+    "intro": "Please read these Terms of Service carefully before using the Parras General Services website or engaging our cleaning and maintenance services. By using our website or services, you agree to be bound by these terms.",
+    "section1Title": "Services",
+    "section1Text": "Parras General Services provides commercial cleaning and maintenance services as described on our website. The specific services, frequency, and pricing will be agreed upon in writing between us and the client before any work begins.",
+    "section2Title": "Quotes and Pricing",
+    "section2Text": "Quotes provided through our website or by our team are estimates based on the information provided. Final pricing may vary depending on the actual scope of work, site conditions, and specific requirements identified during our evaluation.",
+    "section3Title": "Service Agreements",
+    "section3Text": "All recurring cleaning services are subject to a written service agreement that outlines the scope of work, schedule, pricing, and cancellation terms. Either party may cancel with written notice as specified in the agreement.",
+    "section4Title": "Client Responsibilities",
+    "section4Text": "Clients are responsible for providing safe access to the premises, disclosing any hazardous materials or conditions, and ensuring the work area is reasonably accessible for our cleaning team.",
+    "section5Title": "Liability",
+    "section5Text": "Parras General Services carries appropriate insurance coverage. We are not liable for pre-existing damage, normal wear and tear, or damage caused by improper maintenance by others. Any claims must be reported within 24 hours of service completion.",
+    "section6Title": "Privacy",
+    "section6Text": "Your use of our website and services is also governed by our Privacy Policy. Please review our Privacy Policy for information on how we collect, use, and protect your personal information.",
+    "section7Title": "Changes to Terms",
+    "section7Text": "We reserve the right to update these Terms of Service at any time. Changes will be posted on this page with an updated revision date. Continued use of our website or services after changes constitutes acceptance of the revised terms."
+  },
   "notFound": {
     "title": "Page Not Found",
     "description": "The page you're looking for doesn't exist or has been moved.",

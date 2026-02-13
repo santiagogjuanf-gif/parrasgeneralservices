@@ -30,6 +30,7 @@ const dict = {
     'sidebar.overview': 'Overview',
     'sidebar.contacts': 'Contacts',
     'sidebar.blog': 'Blog Posts',
+    'sidebar.users': 'Users',
     'sidebar.signOut': 'Sign Out',
 
     // Overview
@@ -39,6 +40,7 @@ const dict = {
     'overview.newContacts': 'New Contacts',
     'overview.totalPosts': 'Total Posts',
     'overview.published': 'Published',
+    'overview.totalUsers': 'Total Users',
 
     // Contacts
     'contacts.title': 'Contacts',
@@ -84,6 +86,29 @@ const dict = {
     'editor.content': 'Content (Markdown)',
     'editor.selectCategory': 'Select category',
     'editor.error.connection': 'Connection error',
+
+    // Users
+    'users.title': 'Users',
+    'users.usersCount': 'users',
+    'users.addUser': 'Add User',
+    'users.fullName': 'Full Name',
+    'users.username': 'Username',
+    'users.password': 'Password',
+    'users.role': 'Role',
+    'users.roleAdmin': 'Admin',
+    'users.roleStaff': 'Staff',
+    'users.cancel': 'Cancel',
+    'users.create': 'Create User',
+    'users.creating': 'Creating…',
+    'users.empty': 'No users yet',
+    'users.emptyDesc': 'Create the first user to get started.',
+    'users.nameCol': 'Name',
+    'users.usernameCol': 'Username',
+    'users.roleCol': 'Role',
+    'users.dateCol': 'Created',
+    'users.actionsCol': 'Actions',
+    'users.deleteConfirm': 'Are you sure you want to delete this user?',
+    'users.errorRequired': 'All fields are required.',
   },
   es: {
     // Login
@@ -114,6 +139,7 @@ const dict = {
     'sidebar.overview': 'Resumen',
     'sidebar.contacts': 'Contactos',
     'sidebar.blog': 'Blog',
+    'sidebar.users': 'Usuarios',
     'sidebar.signOut': 'Cerrar Sesión',
 
     // Overview
@@ -123,6 +149,7 @@ const dict = {
     'overview.newContacts': 'Nuevos Contactos',
     'overview.totalPosts': 'Posts Totales',
     'overview.published': 'Publicados',
+    'overview.totalUsers': 'Usuarios Totales',
 
     // Contacts
     'contacts.title': 'Contactos',
@@ -168,6 +195,29 @@ const dict = {
     'editor.content': 'Contenido (Markdown)',
     'editor.selectCategory': 'Seleccionar categoría',
     'editor.error.connection': 'Error de conexión',
+
+    // Users
+    'users.title': 'Usuarios',
+    'users.usersCount': 'usuarios',
+    'users.addUser': 'Agregar Usuario',
+    'users.fullName': 'Nombre Completo',
+    'users.username': 'Usuario',
+    'users.password': 'Contraseña',
+    'users.role': 'Rol',
+    'users.roleAdmin': 'Administrador',
+    'users.roleStaff': 'Personal',
+    'users.cancel': 'Cancelar',
+    'users.create': 'Crear Usuario',
+    'users.creating': 'Creando…',
+    'users.empty': 'No hay usuarios aún',
+    'users.emptyDesc': 'Crea el primer usuario para comenzar.',
+    'users.nameCol': 'Nombre',
+    'users.usernameCol': 'Usuario',
+    'users.roleCol': 'Rol',
+    'users.dateCol': 'Creado',
+    'users.actionsCol': 'Acciones',
+    'users.deleteConfirm': '¿Está seguro de que desea eliminar este usuario?',
+    'users.errorRequired': 'Todos los campos son obligatorios.',
   },
 } as const
 

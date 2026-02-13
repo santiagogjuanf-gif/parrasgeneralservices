@@ -313,6 +313,25 @@
     "section6Title": "Contáctanos",
     "section6Text": "Si tienes preguntas sobre esta política de privacidad o sobre tus datos personales, contáctanos en:"
   },
+  "terms": {
+    "title": "Términos de servicio",
+    "lastUpdated": "Última actualización: febrero de 2026",
+    "intro": "Por favor lee estos Términos de Servicio cuidadosamente antes de usar el sitio web de Parras General Services o contratar nuestros servicios de limpieza y mantenimiento. Al usar nuestro sitio web o servicios, aceptas estos términos.",
+    "section1Title": "Servicios",
+    "section1Text": "Parras General Services ofrece servicios de limpieza y mantenimiento comercial como se describe en nuestro sitio web. Los servicios específicos, la frecuencia y los precios se acordarán por escrito entre nosotros y el cliente antes de comenzar cualquier trabajo.",
+    "section2Title": "Cotizaciones y precios",
+    "section2Text": "Las cotizaciones proporcionadas a través de nuestro sitio web o por nuestro equipo son estimaciones basadas en la información proporcionada. Los precios finales pueden variar según el alcance real del trabajo, las condiciones del sitio y los requisitos específicos identificados durante nuestra evaluación.",
+    "section3Title": "Acuerdos de servicio",
+    "section3Text": "Todos los servicios de limpieza recurrentes están sujetos a un acuerdo de servicio por escrito que describe el alcance del trabajo, el horario, los precios y los términos de cancelación. Cualquiera de las partes puede cancelar con aviso por escrito según lo especificado en el acuerdo.",
+    "section4Title": "Responsabilidades del cliente",
+    "section4Text": "Los clientes son responsables de proporcionar acceso seguro a las instalaciones, divulgar cualquier material o condición peligrosa, y asegurar que el área de trabajo sea razonablemente accesible para nuestro equipo de limpieza.",
+    "section5Title": "Responsabilidad",
+    "section5Text": "Parras General Services cuenta con cobertura de seguro apropiada. No somos responsables de daños preexistentes, desgaste normal o daños causados por mantenimiento inadecuado de otros. Cualquier reclamo debe reportarse dentro de las 24 horas posteriores a la finalización del servicio.",
+    "section6Title": "Privacidad",
+    "section6Text": "El uso de nuestro sitio web y servicios también se rige por nuestra Política de Privacidad. Por favor revisa nuestra Política de Privacidad para información sobre cómo recopilamos, usamos y protegemos tu información personal.",
+    "section7Title": "Cambios a los términos",
+    "section7Text": "Nos reservamos el derecho de actualizar estos Términos de Servicio en cualquier momento. Los cambios se publicarán en esta página con una fecha de revisión actualizada. El uso continuado de nuestro sitio web o servicios después de los cambios constituye la aceptación de los términos revisados."
+  },
   "notFound": {
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o fue movida.",

@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer'
 import CookieConsent from '@/components/layout/CookieConsent'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import BackToTop from '@/components/layout/BackToTop'
+import MascotCleaner from '@/components/ui/MascotCleaner'
 import '../globals.css'
 
 export const metadata: Metadata = {
@@ -53,6 +54,7 @@ export default async function LocaleLayout({
           <WhatsAppButton />
           <BackToTop />
           <CookieConsent />
+          <MascotCleaner />
         </NextIntlClientProvider>
       </body>
     </html>

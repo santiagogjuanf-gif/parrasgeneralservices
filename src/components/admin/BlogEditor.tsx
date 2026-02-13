@@ -103,7 +103,7 @@ export default function BlogEditor({ postId }: { postId?: number }) {
     )
   }
 
-  const inputClass = 'w-full rounded-xl border px-4 py-3 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500'
+  const inputClass = 'w-full rounded-xl border px-4 py-3 text-sm text-black transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500'
 
   return (
     <motion.div className="mx-auto max-w-4xl"
@@ -117,7 +117,7 @@ export default function BlogEditor({ postId }: { postId?: number }) {
         </button>
         <div className="flex items-center gap-3">
           <select value={post.status} onChange={(e) => update('status', e.target.value)}
-            className="rounded-xl border px-4 py-2.5 text-sm" style={{ borderColor: '#E2E8F0' }}>
+            className="rounded-xl border px-4 py-2.5 text-sm text-black" style={{ borderColor: '#E2E8F0' }}>
             <option value="DRAFT">{t('editor.draft')}</option>
             <option value="PUBLISHED">{t('editor.published')}</option>
           </select>

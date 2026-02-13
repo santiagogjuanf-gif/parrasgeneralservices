@@ -313,6 +313,25 @@
     "section6Title": "Nous joindre",
     "section6Text": "Si vous avez des questions au sujet de cette politique de confidentialité ou de vos données personnelles, veuillez nous contacter à :"
   },
+  "terms": {
+    "title": "Conditions d'utilisation",
+    "lastUpdated": "Dernière mise à jour : février 2026",
+    "intro": "Veuillez lire attentivement ces Conditions d'utilisation avant d'utiliser le site Web de Parras General Services ou de faire appel à nos services de nettoyage et d'entretien. En utilisant notre site Web ou nos services, vous acceptez d'être lié par ces conditions.",
+    "section1Title": "Services",
+    "section1Text": "Parras General Services offre des services de nettoyage et d'entretien commercial tels que décrits sur notre site Web. Les services spécifiques, la fréquence et les prix seront convenus par écrit entre nous et le client avant le début de tout travail.",
+    "section2Title": "Soumissions et tarification",
+    "section2Text": "Les soumissions fournies via notre site Web ou par notre équipe sont des estimations basées sur les renseignements fournis. Les prix finaux peuvent varier selon la portée réelle du travail, les conditions du site et les exigences spécifiques identifiées lors de notre évaluation.",
+    "section3Title": "Ententes de service",
+    "section3Text": "Tous les services de nettoyage récurrents sont assujettis à une entente de service écrite qui décrit la portée du travail, l'horaire, les prix et les conditions d'annulation. L'une ou l'autre des parties peut annuler avec un avis écrit tel que spécifié dans l'entente.",
+    "section4Title": "Responsabilités du client",
+    "section4Text": "Les clients sont responsables de fournir un accès sécuritaire aux locaux, de divulguer tout matériel ou condition dangereuse, et de s'assurer que l'aire de travail est raisonnablement accessible pour notre équipe de nettoyage.",
+    "section5Title": "Responsabilité",
+    "section5Text": "Parras General Services détient une couverture d'assurance appropriée. Nous ne sommes pas responsables des dommages préexistants, de l'usure normale ou des dommages causés par un entretien inadéquat par d'autres. Toute réclamation doit être signalée dans les 24 heures suivant la fin du service.",
+    "section6Title": "Vie privée",
+    "section6Text": "Votre utilisation de notre site Web et de nos services est également régie par notre Politique de confidentialité. Veuillez consulter notre Politique de confidentialité pour des renseignements sur la façon dont nous recueillons, utilisons et protégeons vos renseignements personnels.",
+    "section7Title": "Modifications des conditions",
+    "section7Text": "Nous nous réservons le droit de mettre à jour ces Conditions d'utilisation à tout moment. Les modifications seront publiées sur cette page avec une date de révision mise à jour. L'utilisation continue de notre site Web ou de nos services après les modifications constitue l'acceptation des conditions révisées."
+  },
   "notFound": {
     "title": "Page introuvable",
     "description": "La page que vous cherchez n'existe pas ou a été déplacée.",

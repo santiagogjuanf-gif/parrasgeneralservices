@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, type ReactNode } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, MessageSquare, FileText, LogOut, Menu, X, Globe, ChevronRight } from 'lucide-react'
+import { LayoutDashboard, MessageSquare, FileText, Users, LogOut, Menu, X, Globe, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   type AdminLocale,
@@ -79,6 +79,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
     { href: `${adminBase}/dashboard`, label: t('sidebar.overview'), icon: LayoutDashboard },
     { href: `${adminBase}/dashboard/contacts`, label: t('sidebar.contacts'), icon: MessageSquare },
     { href: `${adminBase}/dashboard/blog`, label: t('sidebar.blog'), icon: FileText },
+    { href: `${adminBase}/dashboard/users`, label: t('sidebar.users'), icon: Users },
   ]
 
   const isActive = (href: string) =>
