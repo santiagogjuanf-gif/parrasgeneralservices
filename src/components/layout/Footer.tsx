@@ -86,12 +86,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@parrasgeneral.com"
+                  href="mailto:info@parrasgeneralservices.ca"
                   className="inline-flex items-center gap-2 text-sm transition-colors hover:text-white"
                   style={{ color: '#94A3B8' }}
                 >
                   <Mail size={14} />
-                  info@parrasgeneral.com
+                  info@parrasgeneralservices.ca
                 </a>
               </li>
             </ul>

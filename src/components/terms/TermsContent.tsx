@@ -57,7 +57,7 @@ export default function TermsContent() {
           <AnimatedSection delay={0.3} className="mt-10">
             <div className="rounded-xl border border-[#E2E8F0] bg-[#F6F8FA] p-6">
               <p className="font-semibold text-[#0F172A]">Parras General Services</p>
-              <p className="mt-1 text-sm text-[#334155]">info@parrasgeneral.com</p>
+              <p className="mt-1 text-sm text-[#334155]">info@parrasgeneralservices.ca</p>
             </div>
           </AnimatedSection>
         </div>
