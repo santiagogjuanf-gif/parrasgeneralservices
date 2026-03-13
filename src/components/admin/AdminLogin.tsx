@@ -60,7 +60,12 @@ export default function AdminLogin() {
 
       setTimeout(() => {
         const currentPath = window.location.pathname.replace(/\/$/, '')
-        router.push(`${currentPath}/dashboard`)
+        const role = data.user?.role
+        if (role === 'WORKER') {
+          router.push(`${currentPath}/worker`)
+        } else {
+          router.push(`${currentPath}/dashboard`)
+        }
       }, 2200)
     } catch {
       setError(t('login.error.connection'))

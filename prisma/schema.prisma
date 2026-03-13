@@ -14,6 +14,11 @@ model User {
   fullName     String
   role         String   @default("STAFF")
   createdAt    DateTime @default(now())
+
+  assignedStores    StoreWorker[]
+  workOrders        WorkOrder[]
+  tickets           Ticket[]
+  pushSubscriptions PushSubscription[]
 }
 
 model ContactSubmission {
@@ -54,4 +59,106 @@ model BlogPost {
   contentEn     String    @default("")
   contentFr     String    @default("")
   contentEs     String    @default("")
+}
+
+// ─── Stores ────────────────────────────────────────────────────────────────
+
+model Store {
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  days      String   @default("1,2,3,4,5") // comma-separated: 0=Sun,1=Mon,...,6=Sat
+  createdAt DateTime @default(now())
+
+  tasks      StoreTask[]
+  workers    StoreWorker[]
+  workOrders WorkOrder[]
+}
+
+model StoreTask {
+  id      Int    @id @default(autoincrement())
+  storeId Int
+  label   String
+  count   Int?   // e.g. number of bathrooms
+
+  store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
+}
+
+model StoreWorker {
+  id      Int @id @default(autoincrement())
+  storeId Int
+  userId  Int
+
+  store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([storeId, userId])
+}
+
+// ─── Work Orders ───────────────────────────────────────────────────────────
+
+model WorkOrder {
+  id          Int       @id @default(autoincrement())
+  storeId     Int
+  workerId    Int
+  date        String    // YYYY-MM-DD
+  status      String    @default("PENDING") // PENDING | IN_PROGRESS | COMPLETED | INCOMPLETE
+  latitude    Float?
+  longitude   Float?
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  store  Store           @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  worker User            @relation(fields: [workerId], references: [id], onDelete: Cascade)
+  tasks  WorkOrderTask[]
+  photos WorkOrderPhoto[]
+}
+
+model WorkOrderTask {
+  id          Int     @id @default(autoincrement())
+  workOrderId Int
+  label       String
+  count       Int?
+  completed   Boolean @default(false)
+
+  workOrder WorkOrder @relation(fields: [workOrderId], references: [id], onDelete: Cascade)
+}
+
+model WorkOrderPhoto {
+  id          Int      @id @default(autoincrement())
+  workOrderId Int
+  filename    String
+  path        String
+  createdAt   DateTime @default(now())
+
+  workOrder WorkOrder @relation(fields: [workOrderId], references: [id], onDelete: Cascade)
+}
+
+// ─── Tickets ───────────────────────────────────────────────────────────────
+
+model Ticket {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  category   String   // GASOLINA | COMIDA | MATERIAL | HERRAMIENTA | OTRO
+  otherLabel String?
+  amount     Float?
+  filename   String
+  path       String
+  notes      String?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── Push Notifications ────────────────────────────────────────────────────
+
+model PushSubscription {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

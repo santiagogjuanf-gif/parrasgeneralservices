@@ -144,6 +144,8 @@ export default function UsersTable() {
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                     className="w-full rounded-xl border px-4 py-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     style={{ borderColor: '#E2E8F0' }}>
+                    <option value="WORKER">{t('users.roleWorker')}</option>
+                    <option value="BOSS">{t('users.roleBoss')}</option>
                     <option value="STAFF">{t('users.roleStaff')}</option>
                     <option value="ADMIN">{t('users.roleAdmin')}</option>
                   </select>
@@ -199,7 +201,7 @@ export default function UsersTable() {
                     <td className="px-6 py-4 font-medium" style={{ color: '#0F172A' }}>
                       <div className="flex items-center gap-3">
                         <div className="flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold text-white"
-                          style={{ background: u.role === 'ADMIN' ? 'linear-gradient(135deg, #7C3AED, #8B5CF6)' : 'linear-gradient(135deg, #0B7A3B, #10B981)' }}>
+                          style={{ background: u.role === 'ADMIN' ? 'linear-gradient(135deg, #7C3AED, #8B5CF6)' : u.role === 'BOSS' ? 'linear-gradient(135deg, #D97706, #F59E0B)' : 'linear-gradient(135deg, #0B7A3B, #10B981)' }}>
                           {u.fullName.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)}
                         </div>
                         {u.fullName}
