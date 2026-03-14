@@ -151,7 +151,26 @@ model Ticket {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-// ─── Push Notifications ────────────────────────────────────────────────────
+// ─── Quotes ────────────────────────────────────────────────────────────────
+
+model Quote {
+  id             Int      @id @default(autoincrement())
+  quoteNumber    String   @unique       // e.g. "Q-2026-001"
+  quoteDate      String                 // YYYY-MM-DD
+  clientName     String
+  clientAddress  String
+  clientPhone    String?
+  clientEmail    String?
+  serviceType    String                 // e.g. "Monthly Cleaning Agreement"
+  scopeItems     String                 // JSON: string[]
+  pricingOptions String                 // JSON: {planOption,detail,monthlyRate}[]
+  commitment     String                 // professional commitment paragraph
+  termsItems     String                 // JSON: string[]
+  status         String   @default("DRAFT") // DRAFT | SENT | ACCEPTED | DECLINED
+  notes          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
 
 model PushSubscription {
   id        Int      @id @default(autoincrement())

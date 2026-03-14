@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, type ReactNode } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, MessageSquare, FileText, Users, LogOut, Menu, X, Globe, ChevronRight, Store, ClipboardList, Receipt } from 'lucide-react'
+import { LayoutDashboard, MessageSquare, FileText, Users, LogOut, Menu, X, Globe, ChevronRight, Store, ClipboardList, Receipt, ClipboardCheck } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   type AdminLocale,
