@@ -120,9 +120,9 @@ export default function QuotesAdmin() {
     const dialog = dialogRef.current
     if (!dialog) return
     if (previewId !== null) {
-      dialog.showModal()
+      if (!dialog.open) dialog.showModal()
     } else {
-      dialog.close()
+      if (dialog.open) dialog.close()
     }
   }, [previewId])
   const [form, setForm] = useState({ ...EMPTY_FORM, scopeItems: [''], pricingOptions: [{ planOption: '', detail: '', monthlyRate: '' }], termsItems: [...DEFAULT_TERMS] })
@@ -449,14 +449,8 @@ export default function QuotesAdmin() {
       {/* ── PDF Preview — native <dialog> (browser top-layer, above everything) ── */}
       <dialog
         ref={dialogRef}
+        className="pgs-preview"
         onCancel={() => setPreviewId(null)}
-        style={{
-          padding: 0, border: 'none', borderRadius: 0,
-          width: '100vw', height: '100vh',
-          maxWidth: '100vw', maxHeight: '100vh',
-          display: 'flex', flexDirection: 'column',
-          backgroundColor: '#1a1a1a',
-        }}
       >
         {/* Toolbar */}
         <div style={{
@@ -470,8 +464,7 @@ export default function QuotesAdmin() {
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
             <button
               onClick={() => {
-                const url = `${adminBase}/dashboard/quotes/${previewId}/print?autoprint=1`
-                window.open(url, '_blank', 'width=900,height=1000')
+                iframeRef.current?.contentWindow?.print()
               }}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -499,7 +492,7 @@ export default function QuotesAdmin() {
         {previewId !== null && (
           <iframe
             ref={iframeRef}
-            src={`${adminBase}/dashboard/quotes/${previewId}/print`}
+            src={`${adminBase}/quotes/${previewId}/print`}
             style={{ flex: 1, width: '100%', border: 'none', backgroundColor: '#e8e8e8' }}
             title="Quote Preview"
           />
