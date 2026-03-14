@@ -44,5 +44,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# database (root-level copy created during build)
+# database files – never track, never overwrite
 /dev.db
+prisma/dev.db
+prisma/*.db
+prisma/*.db-journal
+prisma/*.db-shm
+prisma/*.db-wal

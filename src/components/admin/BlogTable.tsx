@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { Plus, Pencil, Trash2, Eye, EyeOff, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useAdminLang } from './AdminDashboardShell'
+import ConfirmModal from './ConfirmModal'
 
 interface Post {
   id: number
@@ -23,6 +24,7 @@ export default function BlogTable() {
   const { lang, t } = useAdminLang()
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
 
   const fetchPosts = () => {
     setLoading(true)
@@ -34,10 +36,13 @@ export default function BlogTable() {
 
   useEffect(() => { fetchPosts() }, [])
 
-  const deletePost = async (id: number) => {
-    if (!confirm(t('blog.deleteConfirm'))) return
-    await fetch(`/api/admin/blog/${id}`, { method: 'DELETE' })
-    setPosts((prev) => prev.filter((p) => p.id !== id))
+  const deletePost = (id: number) => setConfirmDeleteId(id)
+
+  const doDeletePost = async () => {
+    if (confirmDeleteId === null) return
+    await fetch(`/api/admin/blog/${confirmDeleteId}`, { method: 'DELETE' })
+    setPosts((prev) => prev.filter((p) => p.id !== confirmDeleteId))
+    setConfirmDeleteId(null)
   }
 
   const toggleStatus = async (post: Post) => {
@@ -57,6 +62,12 @@ export default function BlogTable() {
 
   return (
     <div>
+      <ConfirmModal
+        open={confirmDeleteId !== null}
+        message={t('blog.deleteConfirm')}
+        onConfirm={doDeletePost}
+        onCancel={() => setConfirmDeleteId(null)}
+      />
       <div className="mb-4 flex items-center justify-between">
         <p className="text-sm" style={{ color: '#94A3B8' }}>{posts.length} {t('blog.posts')}</p>
         <motion.button

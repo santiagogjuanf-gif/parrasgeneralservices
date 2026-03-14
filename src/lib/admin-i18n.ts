@@ -34,6 +34,7 @@ const dict = {
     'sidebar.stores': 'Stores',
     'sidebar.workorders': 'Work Orders',
     'sidebar.tickets': 'Tickets',
+    'sidebar.quotes': 'Quotes',
     'sidebar.signOut': 'Sign Out',
 
     // Overview
@@ -294,6 +295,7 @@ const dict = {
     'sidebar.stores': 'Tiendas',
     'sidebar.workorders': 'Órdenes de Trabajo',
     'sidebar.tickets': 'Tickets',
+    'sidebar.quotes': 'Cotizaciones',
     'sidebar.signOut': 'Cerrar Sesión',
 
     // Overview
