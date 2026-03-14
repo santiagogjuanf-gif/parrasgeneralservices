@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import { Plus, Pencil, Trash2, X, FileText, Printer } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -113,7 +112,19 @@ export default function QuotesAdmin() {
   const [page, setPage] = useState(1)
   const PAGE_SIZE = 10
   const [previewId, setPreviewId] = useState<number | null>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  // Open / close native <dialog> when previewId changes
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+    if (previewId !== null) {
+      dialog.showModal()
+    } else {
+      dialog.close()
+    }
+  }, [previewId])
   const [form, setForm] = useState({ ...EMPTY_FORM, scopeItems: [''], pricingOptions: [{ planOption: '', detail: '', monthlyRate: '' }], termsItems: [...DEFAULT_TERMS] })
   const [saving, setSaving] = useState(false)
   const [formError, setFormError] = useState('')
@@ -435,64 +446,65 @@ export default function QuotesAdmin() {
         )
       })()}
 
-      {/* ── PDF Preview Modal (portal → renders directly in body) ── */}
-      {previewId !== null && typeof document !== 'undefined' && createPortal(
-        <div
-          style={{
-            position: 'fixed', inset: 0, zIndex: 9999,
-            display: 'flex', flexDirection: 'column',
-            backgroundColor: 'rgba(0,0,0,0.82)',
-          }}
-        >
-          {/* Toolbar */}
-          <div
-            style={{
-              flexShrink: 0, display: 'flex', alignItems: 'center',
-              justifyContent: 'space-between', padding: '10px 20px',
-              background: 'linear-gradient(135deg, #0B7A3B, #10B981)',
-            }}
-          >
-            <span style={{ color: '#fff', fontWeight: 600, fontSize: 14 }}>
-              {lang === 'es' ? 'Vista previa de cotización' : 'Quote Preview'}
-            </span>
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-              <button
-                onClick={() => {
-                  const url = `${adminBase}/dashboard/quotes/${previewId}/print?autoprint=1`
-                  window.open(url, '_blank', 'width=900,height=1000')
-                }}
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 6,
-                  backgroundColor: '#fff', color: '#0B7A3B',
-                  border: 'none', borderRadius: 12,
-                  padding: '6px 16px', fontWeight: 700, fontSize: 13, cursor: 'pointer',
-                }}
-              >
-                <Printer size={14} />
-                {lang === 'es' ? 'Imprimir / Guardar PDF' : 'Print / Save PDF'}
-              </button>
-              <button
-                onClick={() => setPreviewId(null)}
-                style={{
-                  background: 'rgba(255,255,255,0.15)', border: 'none',
-                  borderRadius: 8, padding: 6, cursor: 'pointer', display: 'flex',
-                }}
-              >
-                <X size={18} color="#fff" />
-              </button>
-            </div>
+      {/* ── PDF Preview — native <dialog> (browser top-layer, above everything) ── */}
+      <dialog
+        ref={dialogRef}
+        onCancel={() => setPreviewId(null)}
+        style={{
+          padding: 0, border: 'none', borderRadius: 0,
+          width: '100vw', height: '100vh',
+          maxWidth: '100vw', maxHeight: '100vh',
+          display: 'flex', flexDirection: 'column',
+          backgroundColor: '#1a1a1a',
+        }}
+      >
+        {/* Toolbar */}
+        <div style={{
+          flexShrink: 0, display: 'flex', alignItems: 'center',
+          justifyContent: 'space-between', padding: '10px 20px',
+          background: 'linear-gradient(135deg, #0B7A3B, #10B981)',
+        }}>
+          <span style={{ color: '#fff', fontWeight: 600, fontSize: 14 }}>
+            {lang === 'es' ? 'Vista previa de cotización' : 'Quote Preview'}
+          </span>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button
+              onClick={() => {
+                const url = `${adminBase}/dashboard/quotes/${previewId}/print?autoprint=1`
+                window.open(url, '_blank', 'width=900,height=1000')
+              }}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                backgroundColor: '#fff', color: '#0B7A3B', border: 'none',
+                borderRadius: 12, padding: '6px 16px',
+                fontWeight: 700, fontSize: 13, cursor: 'pointer',
+              }}
+            >
+              <Printer size={14} />
+              {lang === 'es' ? 'Imprimir / Guardar PDF' : 'Print / Save PDF'}
+            </button>
+            <button
+              onClick={() => setPreviewId(null)}
+              style={{
+                background: 'rgba(255,255,255,0.15)', border: 'none',
+                borderRadius: 8, padding: 6, cursor: 'pointer', display: 'flex',
+              }}
+            >
+              <X size={18} color="#fff" />
+            </button>
           </div>
+        </div>
 
-          {/* iframe preview */}
+        {/* iframe */}
+        {previewId !== null && (
           <iframe
             ref={iframeRef}
             src={`${adminBase}/dashboard/quotes/${previewId}/print`}
-            style={{ flex: 1, width: '100%', border: 'none', background: '#e8e8e8' }}
+            style={{ flex: 1, width: '100%', border: 'none', backgroundColor: '#e8e8e8' }}
             title="Quote Preview"
           />
-        </div>,
-        document.body
-      )}
+        )}
+      </dialog>
 
       {/* Create / Edit Modal */}
       <AnimatePresence>
