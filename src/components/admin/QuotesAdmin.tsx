@@ -106,12 +106,15 @@ export default function QuotesAdmin() {
   const [editingId, setEditingId] = useState<number | null>(null)
   const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
   const [filterStatus, setFilterStatus] = useState('')
+  const [page, setPage] = useState(1)
+  const PAGE_SIZE = 10
   const [form, setForm] = useState({ ...EMPTY_FORM, scopeItems: [''], pricingOptions: [{ planOption: '', detail: '', monthlyRate: '' }], termsItems: [...DEFAULT_TERMS] })
   const [saving, setSaving] = useState(false)
   const [formError, setFormError] = useState('')
 
   const load = useCallback(async () => {
     setLoading(true)
+    setPage(1)
     try {
       const qs = filterStatus ? `?status=${filterStatus}` : ''
       const data = await fetch(`/api/admin/quotes${qs}`).then((r) => r.json())
@@ -309,75 +312,123 @@ export default function QuotesAdmin() {
             {lang === 'es' ? 'Crea tu primera cotización.' : 'Create your first quote.'}
           </p>
         </motion.div>
-      ) : (
-        <div className="space-y-3">
-          {quotes.map((q) => (
-            <motion.div
-              key={q.id}
-              className="rounded-2xl border bg-white p-4"
-              style={{ borderColor: '#E2E8F0' }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-xs" style={{ color: '#94A3B8' }}>
-                      {q.quoteNumber}
-                    </span>
-                    <StatusBadge status={q.status} />
+      ) : (() => {
+        const totalPages = Math.ceil(quotes.length / PAGE_SIZE)
+        const paginated = quotes.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+        return (
+          <>
+            <div className="space-y-3">
+              {paginated.map((q) => (
+                <motion.div
+                  key={q.id}
+                  className="rounded-2xl border bg-white p-4"
+                  style={{ borderColor: '#E2E8F0' }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-xs" style={{ color: '#94A3B8' }}>
+                          {q.quoteNumber}
+                        </span>
+                        <StatusBadge status={q.status} />
+                      </div>
+                      <p className="mt-1 font-semibold" style={{ color: '#0F172A' }}>
+                        {q.clientName}
+                      </p>
+                      <p className="text-xs" style={{ color: '#94A3B8' }}>
+                        {q.clientAddress}
+                      </p>
+                      <p className="text-xs" style={{ color: '#94A3B8' }}>
+                        {q.serviceType} · {formatDate(q.quoteDate)}
+                      </p>
+                    </div>
+                    <div className="flex flex-shrink-0 items-center gap-1">
+                      <select
+                        value={q.status}
+                        onChange={(e) => handleStatusChange(q.id, e.target.value)}
+                        className="rounded-lg border px-2 py-1 text-xs text-black focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        style={{ borderColor: '#E2E8F0' }}
+                      >
+                        {STATUSES.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </select>
+                      <a
+                        href={`/panel/dashboard/quotes/${q.id}/print`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-lg p-2 transition-colors hover:bg-green-50"
+                        title="Preview / Print PDF"
+                      >
+                        <Printer size={15} style={{ color: '#10B981' }} />
+                      </a>
+                      <button
+                        onClick={() => openEdit(q)}
+                        className="rounded-lg p-2 transition-colors hover:bg-blue-50"
+                        title="Edit"
+                      >
+                        <Pencil size={15} style={{ color: '#3B82F6' }} />
+                      </button>
+                      <button
+                        onClick={() => setConfirmDeleteId(q.id)}
+                        className="rounded-lg p-2 transition-colors hover:bg-red-50"
+                        title="Delete"
+                      >
+                        <Trash2 size={15} style={{ color: '#EF4444' }} />
+                      </button>
+                    </div>
                   </div>
-                  <p className="mt-1 font-semibold" style={{ color: '#0F172A' }}>
-                    {q.clientName}
-                  </p>
-                  <p className="text-xs" style={{ color: '#94A3B8' }}>
-                    {q.clientAddress}
-                  </p>
-                  <p className="text-xs" style={{ color: '#94A3B8' }}>
-                    {q.serviceType} · {formatDate(q.quoteDate)}
-                  </p>
-                </div>
-                <div className="flex flex-shrink-0 items-center gap-1">
-                  {/* Inline status change */}
-                  <select
-                    value={q.status}
-                    onChange={(e) => handleStatusChange(q.id, e.target.value)}
-                    className="rounded-lg border px-2 py-1 text-xs text-black focus:outline-none focus:ring-1 focus:ring-emerald-500"
-                    style={{ borderColor: '#E2E8F0' }}
-                  >
-                    {STATUSES.map((s) => (
-                      <option key={s} value={s}>{s}</option>
-                    ))}
-                  </select>
-                  <a
-                    href={`/panel/dashboard/quotes/${q.id}/print`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg p-2 transition-colors hover:bg-green-50"
-                    title="Preview / Print PDF"
-                  >
-                    <Printer size={15} style={{ color: '#10B981' }} />
-                  </a>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-6 flex items-center justify-between">
+                <p className="text-xs" style={{ color: '#94A3B8' }}>
+                  {lang === 'es'
+                    ? `Página ${page} de ${totalPages} · ${quotes.length} cotizaciones`
+                    : `Page ${page} of ${totalPages} · ${quotes.length} quotes`}
+                </p>
+                <div className="flex gap-2">
                   <button
-                    onClick={() => openEdit(q)}
-                    className="rounded-lg p-2 transition-colors hover:bg-blue-50"
-                    title="Edit"
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                    className="rounded-xl border px-3 py-1.5 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-40"
+                    style={{ borderColor: '#E2E8F0', color: '#64748B' }}
                   >
-                    <Pencil size={15} style={{ color: '#3B82F6' }} />
+                    {lang === 'es' ? 'Anterior' : 'Previous'}
                   </button>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <button
+                      key={p}
+                      onClick={() => setPage(p)}
+                      className="rounded-xl border px-3 py-1.5 text-xs font-medium transition-colors"
+                      style={{
+                        borderColor: p === page ? '#10B981' : '#E2E8F0',
+                        color: p === page ? '#10B981' : '#64748B',
+                        backgroundColor: p === page ? '#F0FDF4' : 'transparent',
+                      }}
+                    >
+                      {p}
+                    </button>
+                  ))}
                   <button
-                    onClick={() => setConfirmDeleteId(q.id)}
-                    className="rounded-lg p-2 transition-colors hover:bg-red-50"
-                    title="Delete"
+                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                    disabled={page === totalPages}
+                    className="rounded-xl border px-3 py-1.5 text-xs font-medium transition-colors hover:bg-gray-50 disabled:opacity-40"
+                    style={{ borderColor: '#E2E8F0', color: '#64748B' }}
                   >
-                    <Trash2 size={15} style={{ color: '#EF4444' }} />
+                    {lang === 'es' ? 'Siguiente' : 'Next'}
                   </button>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
+            )}
+          </>
+        )
+      })()}
 
       {/* Create / Edit Modal */}
       <AnimatePresence>
