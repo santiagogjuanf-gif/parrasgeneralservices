@@ -149,12 +149,18 @@ export default function QuotesAdmin() {
   }
 
   function openEdit(q: QuoteRow) {
-    let scopeItems: string[] = ['']
-    let pricingOptions: PricingRow[] = [{ planOption: '', detail: '', monthlyRate: '' }]
-    let termsItems: string[] = [...DEFAULT_TERMS]
-    try { scopeItems = JSON.parse(q.scopeItems) } catch { /* ignore */ }
-    try { pricingOptions = JSON.parse(q.pricingOptions) } catch { /* ignore */ }
-    try { termsItems = JSON.parse(q.termsItems) } catch { /* ignore */ }
+    function parseArr<T>(raw: string, fallback: T[]): T[] {
+      try {
+        let val: unknown = JSON.parse(raw)
+        // handle double-encoded strings (old bad data in DB)
+        if (typeof val === 'string') val = JSON.parse(val)
+        return Array.isArray(val) ? (val as T[]) : fallback
+      } catch { return fallback }
+    }
+
+    const scopeItems = parseArr<string>(q.scopeItems, [''])
+    const pricingOptions = parseArr<PricingRow>(q.pricingOptions, [{ planOption: '', detail: '', monthlyRate: '' }])
+    const termsItems = parseArr<string>(q.termsItems, [...DEFAULT_TERMS])
 
     setForm({
       quoteDate: q.quoteDate ?? todayISO(),
