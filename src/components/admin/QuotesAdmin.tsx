@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 import { Plus, Pencil, Trash2, X, FileText, Printer } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAdminLang } from './AdminDashboardShell'
@@ -99,6 +100,8 @@ const sectionLabelStyle = { color: '#475569' }
 
 export default function QuotesAdmin() {
   const { lang } = useAdminLang()
+  const pathname = usePathname()
+  const adminBase = pathname.split('/dashboard')[0]
 
   const [quotes, setQuotes] = useState<QuoteRow[]>([])
   const [loading, setLoading] = useState(true)
@@ -357,7 +360,7 @@ export default function QuotesAdmin() {
                         ))}
                       </select>
                       <a
-                        href={`/panel/dashboard/quotes/${q.id}/print`}
+                        href={`${adminBase}/dashboard/quotes/${q.id}/print`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="rounded-lg p-2 transition-colors hover:bg-green-50"
