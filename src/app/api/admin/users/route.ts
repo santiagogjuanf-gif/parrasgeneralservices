@@ -19,7 +19,7 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const session = await getSession()
-  if (!session.isLoggedIn || session.role !== 'ADMIN') {
+  if (!session.isLoggedIn || !['ADMIN', 'BOSS'].includes(session.role!)) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
@@ -31,6 +31,11 @@ export async function POST(request: NextRequest) {
 
   const validRoles = ['ADMIN', 'BOSS', 'WORKER']
   const userRole = validRoles.includes(role) ? role : 'WORKER'
+
+  // BOSS cannot create ADMIN users
+  if (session.role === 'BOSS' && userRole === 'ADMIN') {
+    return NextResponse.json({ error: 'Forbidden: cannot create admin users.' }, { status: 403 })
+  }
 
   const existing = await prisma.user.findUnique({ where: { username } })
   if (existing) {

@@ -268,7 +268,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
           </header>
 
           <main className="flex-1 p-4 lg:p-6">
-            <AdminLangContext.Provider value={{ lang, t }}>
+            <AdminLangContext.Provider value={{ lang, t, currentRole: user?.role ?? '' }}>
               {children}
             </AdminLangContext.Provider>
           </main>
@@ -285,11 +285,13 @@ import type { AdminKey } from '@/lib/admin-i18n'
 interface AdminLangCtx {
   lang: AdminLocale
   t: (key: AdminKey) => string
+  currentRole: string
 }
 
 export const AdminLangContext = createContext<AdminLangCtx>({
   lang: 'en',
   t: (key) => key,
+  currentRole: '',
 })
 
 export function useAdminLang() {

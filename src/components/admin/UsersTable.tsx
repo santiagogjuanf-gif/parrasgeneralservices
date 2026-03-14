@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Trash2, Plus, Shield, UserIcon, X, Pencil, Eye, EyeOff, RefreshCw } from 'lucide-react'
+import { Trash2, Plus, Shield, UserIcon, X, Pencil, Eye, EyeOff, RefreshCw, Lock } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAdminLang } from './AdminDashboardShell'
 
@@ -24,10 +24,14 @@ function roleColor(role: string) {
 }
 
 export default function UsersTable() {
-  const { t } = useAdminLang()
+  const { t, currentRole } = useAdminLang()
+  const isBoss = currentRole === 'BOSS'
+  // BOSS can only manage WORKER and BOSS, never ADMIN
+  const allowedRoles = isBoss ? (['WORKER', 'BOSS'] as const) : ROLES
   const [users, setUsers] = useState<UserRow[]>([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
 
   // Create form
   const [showCreate, setShowCreate] = useState(false)
@@ -117,9 +121,12 @@ export default function UsersTable() {
     setEditSaving(false)
   }
 
-  const handleDelete = async (id: number) => {
-    if (!confirm(t('users.deleteConfirm'))) return
-    await fetch(`/api/admin/users/${id}`, { method: 'DELETE' })
+  const handleDelete = (id: number) => { setConfirmDeleteId(id) }
+
+  const doDelete = async () => {
+    if (confirmDeleteId === null) return
+    await fetch(`/api/admin/users/${confirmDeleteId}`, { method: 'DELETE' })
+    setConfirmDeleteId(null)
     load()
   }
 
@@ -201,14 +208,20 @@ export default function UsersTable() {
                           {new Date(u.createdAt).toLocaleDateString()}
                         </td>
                         <td className="px-6 py-4">
-                          <div className="flex items-center gap-1">
-                            <button onClick={() => openEdit(u)} className="rounded-lg p-2 hover:bg-blue-50" style={{ color: '#3B82F6' }}>
-                              <Pencil size={15} />
-                            </button>
-                            <button onClick={() => handleDelete(u.id)} className="rounded-lg p-2 hover:bg-red-50" style={{ color: '#EF4444' }}>
-                              <Trash2 size={15} />
-                            </button>
-                          </div>
+                          {isBoss && u.role === 'ADMIN' ? (
+                            <div className="flex items-center gap-1 px-2">
+                              <Lock size={14} style={{ color: '#CBD5E1' }} />
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-1">
+                              <button onClick={() => openEdit(u)} className="rounded-lg p-2 hover:bg-blue-50" style={{ color: '#3B82F6' }}>
+                                <Pencil size={15} />
+                              </button>
+                              <button onClick={() => handleDelete(u.id)} className="rounded-lg p-2 hover:bg-red-50" style={{ color: '#EF4444' }}>
+                                <Trash2 size={15} />
+                              </button>
+                            </div>
+                          )}
                         </td>
                       </tr>
                     )
@@ -292,7 +305,7 @@ export default function UsersTable() {
                     onChange={e => setCreateForm(f => ({ ...f, role: e.target.value }))}
                     className="w-full rounded-xl border px-4 py-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     style={{ borderColor: '#E2E8F0' }}>
-                    {ROLES.map(r => <option key={r} value={r}>{roleName(r)}</option>)}
+                    {allowedRoles.map(r => <option key={r} value={r}>{roleName(r)}</option>)}
                   </select>
                 </div>
                 <label className="flex cursor-pointer items-center gap-3">
@@ -317,6 +330,27 @@ export default function UsersTable() {
                   whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                   {saving ? t('users.creating') : t('users.create')}
                 </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── CONFIRM DELETE MODAL ─────────────────────── */}
+      <AnimatePresence>
+        {confirmDeleteId !== null && (
+          <motion.div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="mx-4 w-full max-w-sm rounded-2xl border bg-white p-6" style={{ borderColor: '#E2E8F0' }}
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}>
+              <h3 className="mb-1 text-base font-bold" style={{ color: '#0F172A' }}>{t('users.deleteConfirm')}</h3>
+              <div className="mt-5 flex gap-3">
+                <button onClick={() => setConfirmDeleteId(null)}
+                  className="flex-1 rounded-xl border py-2.5 text-sm font-medium hover:bg-gray-50"
+                  style={{ borderColor: '#E2E8F0', color: '#64748B' }}>{t('users.cancel')}</button>
+                <button onClick={doDelete}
+                  className="flex-1 rounded-xl py-2.5 text-sm font-bold text-white"
+                  style={{ backgroundColor: '#EF4444' }}>Eliminar</button>
               </div>
             </motion.div>
           </motion.div>
@@ -366,7 +400,7 @@ export default function UsersTable() {
                     onChange={e => setEditForm(f => ({ ...f, role: e.target.value }))}
                     className="w-full rounded-xl border px-4 py-3 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     style={{ borderColor: '#E2E8F0' }}>
-                    {ROLES.map(r => <option key={r} value={r}>{roleName(r)}</option>)}
+                    {allowedRoles.map(r => <option key={r} value={r}>{roleName(r)}</option>)}
                   </select>
                 </div>
                 <div>
