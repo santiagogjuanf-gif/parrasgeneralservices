@@ -33,6 +33,11 @@ export default function QuotePrintView({ quote }: { quote: Quote }) {
 
   useEffect(() => {
     document.title = `${quote.quoteNumber} - ${quote.clientName}`
+    // Auto-print when opened from the modal Print button
+    if (typeof window !== 'undefined' && window.location.search.includes('autoprint=1')) {
+      const t = setTimeout(() => window.print(), 800)
+      return () => clearTimeout(t)
+    }
   }, [quote])
 
   return (
