@@ -37,23 +37,6 @@ export default function QuotePrintView({ quote }: { quote: Quote }) {
 
   return (
     <>
-      {/* Print / Close buttons — hidden when printing */}
-      <div className="no-print fixed right-4 top-4 z-50 flex gap-2">
-        <button
-          onClick={() => window.print()}
-          className="rounded-xl px-5 py-2.5 text-sm font-bold text-white shadow-lg"
-          style={{ backgroundColor: '#0B7A3B' }}
-        >
-          ⬇ Download / Print PDF
-        </button>
-        <button
-          onClick={() => window.close()}
-          className="rounded-xl border bg-white px-5 py-2.5 text-sm font-medium shadow"
-          style={{ borderColor: '#E2E8F0', color: '#64748B' }}
-        >
-          ✕ Close
-        </button>
-      </div>
 
       {/* ── QUOTE DOCUMENT ─────────────────────────────────── */}
       <div className="quote-page">

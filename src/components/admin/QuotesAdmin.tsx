@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { Plus, Pencil, Trash2, X, FileText, Printer } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -111,6 +111,8 @@ export default function QuotesAdmin() {
   const [filterStatus, setFilterStatus] = useState('')
   const [page, setPage] = useState(1)
   const PAGE_SIZE = 10
+  const [previewId, setPreviewId] = useState<number | null>(null)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
   const [form, setForm] = useState({ ...EMPTY_FORM, scopeItems: [''], pricingOptions: [{ planOption: '', detail: '', monthlyRate: '' }], termsItems: [...DEFAULT_TERMS] })
   const [saving, setSaving] = useState(false)
   const [formError, setFormError] = useState('')
@@ -359,10 +361,8 @@ export default function QuotesAdmin() {
                           <option key={s} value={s}>{s}</option>
                         ))}
                       </select>
-                      <a
-                        href={`${adminBase}/dashboard/quotes/${q.id}/print`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={() => setPreviewId(q.id)}
                         className="rounded-lg p-2 transition-colors hover:bg-green-50"
                         title="Preview / Print PDF"
                       >
@@ -433,6 +433,53 @@ export default function QuotesAdmin() {
           </>
         )
       })()}
+
+      {/* ── PDF Preview Modal ── */}
+      <AnimatePresence>
+        {previewId !== null && (
+          <motion.div
+            className="fixed inset-0 z-50 flex flex-col"
+            style={{ backgroundColor: 'rgba(0,0,0,0.75)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Toolbar */}
+            <div
+              className="flex flex-shrink-0 items-center justify-between px-5 py-3"
+              style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
+            >
+              <span className="text-sm font-semibold text-white">
+                {lang === 'es' ? 'Vista previa de cotización' : 'Quote Preview'}
+              </span>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => iframeRef.current?.contentWindow?.print()}
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-1.5 text-sm font-bold"
+                  style={{ color: '#0B7A3B' }}
+                >
+                  <Printer size={15} />
+                  {lang === 'es' ? 'Imprimir / Guardar PDF' : 'Print / Save PDF'}
+                </button>
+                <button
+                  onClick={() => setPreviewId(null)}
+                  className="rounded-lg p-1.5 transition-colors hover:bg-white/20"
+                >
+                  <X size={18} className="text-white" />
+                </button>
+              </div>
+            </div>
+
+            {/* iframe */}
+            <iframe
+              ref={iframeRef}
+              src={`${adminBase}/dashboard/quotes/${previewId}/print`}
+              className="flex-1 w-full border-0"
+              title="Quote Preview"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Create / Edit Modal */}
       <AnimatePresence>
