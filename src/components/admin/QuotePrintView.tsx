@@ -140,7 +140,7 @@ export default function QuotePrintView({ quote }: { quote: Quote }) {
           <div className="section">
             <h3 className="section-title">Professional Commitment</h3>
             {quote.commitment.split('\n\n').map((para, i) => (
-              <p key={i} className="para">{para}</p>
+              <p key={i} className="para" style={{ whiteSpace: 'pre-wrap' }}>{para}</p>
             ))}
           </div>
         )}
