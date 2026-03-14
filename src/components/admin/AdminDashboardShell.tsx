@@ -214,7 +214,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
 
       <div className="flex min-h-screen" style={{ backgroundColor: '#F8FAFC' }}>
         {/* Desktop sidebar */}
-        <aside className="hidden w-64 flex-shrink-0 lg:block">
+        <aside className="hidden w-64 flex-shrink-0 md:block">
           <div className="fixed inset-y-0 left-0 w-64">{sidebar}</div>
         </aside>
 
@@ -222,10 +222,10 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
         <AnimatePresence>
           {sidebarOpen && (
             <>
-              <motion.div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+              <motion.div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                 onClick={() => setSidebarOpen(false)} />
-              <motion.div className="fixed inset-y-0 left-0 z-50 w-64 lg:hidden"
+              <motion.div className="fixed inset-y-0 left-0 z-50 w-64 md:hidden"
                 initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
                 {sidebar}
@@ -241,7 +241,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
             style={{ borderColor: '#E2E8F0' }}>
             <div className="flex items-center gap-3">
               <button onClick={() => setSidebarOpen(true)}
-                className="rounded-lg p-2 transition-colors hover:bg-gray-100 lg:hidden"
+                className="rounded-lg p-2 transition-colors hover:bg-gray-100 md:hidden"
                 style={{ color: '#0F172A' }}>
                 {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -267,7 +267,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
             </div>
           </header>
 
-          <main className="flex-1 p-4 lg:p-6">
+          <main className="flex-1 p-4 md:p-6">
             <AdminLangContext.Provider value={{ lang, t, currentRole: user?.role ?? '' }}>
               {children}
             </AdminLangContext.Provider>

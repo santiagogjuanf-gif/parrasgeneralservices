@@ -72,6 +72,7 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
   const PAGE = 10
   const [confirmTicketId, setConfirmTicketId] = useState<number | null>(null)
   const [orderToast, setOrderToast] = useState('')
+  const [geoPermission, setGeoPermission] = useState<'unknown' | 'prompt' | 'granted' | 'denied'>('unknown')
 
   useEffect(() => { setLang(getStoredAdminLocale()) }, [])
 
@@ -131,12 +132,39 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
     registerPush()
   }, [])
 
+  // Check geolocation permission on mount
+  useEffect(() => {
+    if (!('geolocation' in navigator)) { setGeoPermission('denied'); return }
+    if ('permissions' in navigator) {
+      navigator.permissions.query({ name: 'geolocation' }).then(result => {
+        setGeoPermission(result.state as 'prompt' | 'granted' | 'denied')
+        result.onchange = () => setGeoPermission(result.state as 'prompt' | 'granted' | 'denied')
+      }).catch(() => setGeoPermission('unknown'))
+    }
+  }, [])
+
   const captureLocation = () => {
     if (!navigator.geolocation) { setLocationStatus('denied'); return }
     setLocationStatus('capturing')
     navigator.geolocation.getCurrentPosition(
-      pos => { setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setLocationStatus('ok') },
-      () => setLocationStatus('denied'),
+      pos => {
+        setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude })
+        setLocationStatus('ok')
+        setGeoPermission('granted')
+      },
+      () => {
+        setLocationStatus('denied')
+        setGeoPermission('denied')
+      },
+      { timeout: 10000 }
+    )
+  }
+
+  const requestGeoPermission = () => {
+    if (!navigator.geolocation) { setGeoPermission('denied'); return }
+    navigator.geolocation.getCurrentPosition(
+      () => setGeoPermission('granted'),
+      () => setGeoPermission('denied'),
       { timeout: 10000 }
     )
   }
@@ -359,6 +387,37 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
           {/* JOBS TAB */}
           {tab === 'jobs' && (
             <div>
+              {/* Location permission banner */}
+              {geoPermission !== 'granted' && geoPermission !== 'unknown' && (
+                <motion.div
+                  className="mb-4 flex items-start gap-3 rounded-2xl border p-4"
+                  style={{
+                    borderColor: geoPermission === 'denied' ? '#FECACA' : '#BFDBFE',
+                    backgroundColor: geoPermission === 'denied' ? '#FEF2F2' : '#EFF6FF',
+                  }}
+                  initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}>
+                  <MapPin size={18} className="mt-0.5 flex-shrink-0"
+                    style={{ color: geoPermission === 'denied' ? '#EF4444' : '#3B82F6' }} />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold"
+                      style={{ color: geoPermission === 'denied' ? '#991B1B' : '#1D4ED8' }}>
+                      {geoPermission === 'denied' ? t('worker.locationBlocked') : t('worker.locationNeeded')}
+                    </p>
+                    <p className="mt-0.5 text-xs"
+                      style={{ color: geoPermission === 'denied' ? '#B91C1C' : '#3B82F6' }}>
+                      {geoPermission === 'denied' ? t('worker.locationBlockedDesc') : t('worker.locationNeededDesc')}
+                    </p>
+                  </div>
+                  {geoPermission === 'prompt' && (
+                    <button onClick={requestGeoPermission}
+                      className="flex-shrink-0 rounded-xl px-3 py-1.5 text-xs font-bold text-white"
+                      style={{ backgroundColor: '#3B82F6' }}>
+                      {t('worker.locationEnable')}
+                    </button>
+                  )}
+                </motion.div>
+              )}
+
               {loadingOrders ? (
                 <div className="flex justify-center py-16">
                   <motion.div className="h-8 w-8 rounded-lg" style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
