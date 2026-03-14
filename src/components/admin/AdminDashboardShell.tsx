@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, type ReactNode } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LayoutDashboard, MessageSquare, FileText, Users, LogOut, Menu, X, Globe, ChevronRight, Store, ClipboardList, Receipt, ClipboardCheck } from 'lucide-react'
+import { LayoutDashboard, MessageSquare, FileText, Users, LogOut, Menu, X, Globe, ChevronRight, Store, ClipboardList, Receipt, ClipboardCheck, FileSignature } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   type AdminLocale,
@@ -87,6 +87,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
       { href: `${adminBase}/dashboard/stores`, label: t('sidebar.stores'), icon: Store },
       { href: `${adminBase}/dashboard/workorders`, label: t('sidebar.workorders'), icon: ClipboardList },
       { href: `${adminBase}/dashboard/tickets`, label: t('sidebar.tickets'), icon: Receipt },
+      { href: `${adminBase}/dashboard/quotes`, label: t('sidebar.quotes'), icon: FileSignature },
     ] : []),
   ]
 
