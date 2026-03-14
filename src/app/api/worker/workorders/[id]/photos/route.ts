@@ -102,8 +102,9 @@ export async function DELETE(
     return NextResponse.json({ error: 'Photo not found.' }, { status: 404 })
   }
 
-  // Delete file from disk
-  const filePath = join(process.cwd(), 'public', photo.path)
+  // Delete file from disk (path may be /api/uploads/... or /uploads/...)
+  const relativePath = photo.path.replace(/^\/api\/uploads\//, '/uploads/')
+  const filePath = join(process.cwd(), 'public', relativePath)
   if (existsSync(filePath)) {
     await unlink(filePath).catch(() => {})
   }

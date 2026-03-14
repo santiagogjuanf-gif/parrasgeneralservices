@@ -28,7 +28,8 @@ export async function POST(request: NextRequest) {
   // Delete physical photo files
   for (const workOrder of oldWorkOrders) {
     for (const photo of workOrder.photos) {
-      const filePath = join(process.cwd(), 'public', photo.path)
+      const relativePath = photo.path.replace(/^\/api\/uploads\//, '/uploads/')
+      const filePath = join(process.cwd(), 'public', relativePath)
       if (existsSync(filePath)) {
         await unlink(filePath).catch(() => {})
       }

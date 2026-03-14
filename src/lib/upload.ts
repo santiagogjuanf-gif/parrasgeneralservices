@@ -12,5 +12,5 @@ export async function saveUpload(file: File, subdir: string): Promise<{ filename
   const filepath = join(uploadDir, filename)
   const buffer = Buffer.from(await file.arrayBuffer())
   await writeFile(filepath, buffer)
-  return { filename, path: `/uploads/${subdir}/${filename}` }
+  return { filename, path: `/api/uploads/${subdir}/${filename}` }
 }

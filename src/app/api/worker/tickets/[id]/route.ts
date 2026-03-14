@@ -103,8 +103,9 @@ export async function DELETE(
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  // Delete file from disk
-  const filePath = join(process.cwd(), 'public', ticket.path)
+  // Delete file from disk (path may be /api/uploads/... or /uploads/...)
+  const relativePath = ticket.path.replace(/^\/api\/uploads\//, '/uploads/')
+  const filePath = join(process.cwd(), 'public', relativePath)
   if (existsSync(filePath)) {
     await unlink(filePath).catch(() => {})
   }

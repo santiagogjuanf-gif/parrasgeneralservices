@@ -79,10 +79,12 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
   const isBoss = user?.role === 'BOSS'
 
   const navItems = [
-    ...(isAdmin ? [
+    ...(isAdmin || isBoss ? [
       { href: `${adminBase}/dashboard`, label: t('sidebar.overview'), icon: LayoutDashboard },
       { href: `${adminBase}/dashboard/contacts`, label: t('sidebar.contacts'), icon: MessageSquare },
       { href: `${adminBase}/dashboard/blog`, label: t('sidebar.blog'), icon: FileText },
+    ] : []),
+    ...(isAdmin ? [
       { href: `${adminBase}/dashboard/users`, label: t('sidebar.users'), icon: Users },
     ] : []),
     ...(isAdmin || isBoss ? [
