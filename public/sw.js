@@ -1,11 +1,11 @@
-const CACHE_NAME = 'pgs-panel-v1'
-const OFFLINE_URL = '/panel'
+const CACHE_NAME = 'pgs-panel-v2'
+const START_URL = '/panel'
 
 // Install: cache the app shell
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(['/panel'])
+      return cache.addAll([START_URL])
     })
   )
   self.skipWaiting()
@@ -22,9 +22,18 @@ self.addEventListener('activate', (event) => {
 })
 
 // Fetch: network first, fallback to cache
+// Also: redirect root navigations to /panel so PWA always starts on login
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return
   if (!event.request.url.startsWith(self.location.origin)) return
+
+  const url = new URL(event.request.url)
+
+  // If standalone PWA navigates to root, redirect to /panel
+  if (event.request.mode === 'navigate' && (url.pathname === '/' || url.pathname === '')) {
+    event.respondWith(Response.redirect(START_URL, 302))
+    return
+  }
 
   event.respondWith(
     fetch(event.request)
@@ -35,7 +44,7 @@ self.addEventListener('fetch', (event) => {
         }
         return response
       })
-      .catch(() => caches.match(event.request).then((r) => r || caches.match(OFFLINE_URL)))
+      .catch(() => caches.match(event.request).then((r) => r || caches.match(START_URL)))
   )
 })
 

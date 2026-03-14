@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Trash2, Plus, Pencil, X, UserPlus, Store, Check } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAdminLang } from './AdminDashboardShell'
+import ConfirmModal from './ConfirmModal'
 
 interface StoreTask { id?: number; label: string; count?: number | null }
 interface StoreWorker { id: number; userId: number; user: { id: number; fullName: string; role: string } }
@@ -67,6 +68,7 @@ export default function StoresTable() {
   const [assignUserId, setAssignUserId] = useState('')
   const [assigning, setAssigning] = useState(false)
   const [page, setPage] = useState(1)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
 
   const [form, setForm] = useState({
     name: '', address: '',
@@ -136,9 +138,12 @@ export default function StoresTable() {
     setSaving(false)
   }
 
-  const handleDelete = async (id: number) => {
-    if (!confirm(t('stores.deleteConfirm'))) return
-    await fetch(`/api/admin/stores/${id}`, { method: 'DELETE' })
+  const handleDelete = (id: number) => setConfirmDeleteId(id)
+
+  const doDelete = async () => {
+    if (confirmDeleteId === null) return
+    await fetch(`/api/admin/stores/${confirmDeleteId}`, { method: 'DELETE' })
+    setConfirmDeleteId(null)
     load()
   }
 
@@ -179,6 +184,12 @@ export default function StoresTable() {
 
   return (
     <div>
+      <ConfirmModal
+        open={confirmDeleteId !== null}
+        message={t('stores.deleteConfirm')}
+        onConfirm={doDelete}
+        onCancel={() => setConfirmDeleteId(null)}
+      />
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div>

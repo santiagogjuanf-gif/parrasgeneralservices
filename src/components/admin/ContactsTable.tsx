@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Trash2, ChevronDown, Inbox, Eye, X, MapPin, Mail, Phone, Calendar, Clock, Building2, MessageSquare } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAdminLang } from './AdminDashboardShell'
+import ConfirmModal from './ConfirmModal'
 
 interface Contact {
   id: number
@@ -47,6 +48,7 @@ export default function ContactsTable() {
   const [contacts, setContacts] = useState<Contact[]>([])
   const [loading, setLoading] = useState(true)
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
 
   const getStatusLabel = (status: string) => {
     const key = statusKeyMap[status]
@@ -72,11 +74,14 @@ export default function ContactsTable() {
     setContacts((prev) => prev.map((c) => (c.id === id ? { ...c, status } : c)))
   }
 
-  const deleteContact = async (id: number) => {
-    if (!confirm(t('contacts.deleteConfirm'))) return
-    await fetch(`/api/admin/contacts/${id}`, { method: 'DELETE' })
-    setContacts((prev) => prev.filter((c) => c.id !== id))
-    if (selectedContact?.id === id) setSelectedContact(null)
+  const deleteContact = (id: number) => setConfirmDeleteId(id)
+
+  const doDeleteContact = async () => {
+    if (confirmDeleteId === null) return
+    await fetch(`/api/admin/contacts/${confirmDeleteId}`, { method: 'DELETE' })
+    setContacts((prev) => prev.filter((c) => c.id !== confirmDeleteId))
+    if (selectedContact?.id === confirmDeleteId) setSelectedContact(null)
+    setConfirmDeleteId(null)
   }
 
   if (loading) {
@@ -107,6 +112,12 @@ export default function ContactsTable() {
 
   return (
     <>
+      <ConfirmModal
+        open={confirmDeleteId !== null}
+        message={t('contacts.deleteConfirm')}
+        onConfirm={doDeleteContact}
+        onCancel={() => setConfirmDeleteId(null)}
+      />
       {/* Detail Modal */}
       <AnimatePresence>
         {selectedContact && (

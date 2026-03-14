@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Eye, Trash2, X, Download, Receipt } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAdminLang } from './AdminDashboardShell'
+import ConfirmModal from './ConfirmModal'
 import type { AdminKey } from '@/lib/admin-i18n'
 
 interface TicketRow {
@@ -56,6 +57,7 @@ export default function TicketsAdmin() {
   const [downloading, setDownloading] = useState(false)
   const PAGE_SIZE = 10
   const [page, setPage] = useState(1)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -78,9 +80,12 @@ export default function TicketsAdmin() {
 
   useEffect(() => { load() }, [load])
 
-  const handleDelete = async (id: number) => {
-    if (!confirm(t('tickets.deleteConfirm'))) return
-    await fetch(`/api/worker/tickets/${id}`, { method: 'DELETE' })
+  const handleDelete = (id: number) => setConfirmDeleteId(id)
+
+  const doDelete = async () => {
+    if (confirmDeleteId === null) return
+    await fetch(`/api/worker/tickets/${confirmDeleteId}`, { method: 'DELETE' })
+    setConfirmDeleteId(null)
     load()
   }
 
@@ -117,6 +122,12 @@ export default function TicketsAdmin() {
 
   return (
     <div>
+      <ConfirmModal
+        open={confirmDeleteId !== null}
+        message={t('tickets.deleteConfirm')}
+        onConfirm={doDelete}
+        onCancel={() => setConfirmDeleteId(null)}
+      />
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-xl font-bold" style={{ color: '#0F172A' }}>{t('tickets.title')}</h2>
