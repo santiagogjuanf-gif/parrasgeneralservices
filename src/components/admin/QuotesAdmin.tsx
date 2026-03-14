@@ -367,7 +367,7 @@ export default function QuotesAdmin() {
                         title="Preview / Print PDF"
                       >
                         <Printer size={15} style={{ color: '#10B981' }} />
-                      </a>
+                      </button>
                       <button
                         onClick={() => openEdit(q)}
                         className="rounded-lg p-2 transition-colors hover:bg-blue-50"
