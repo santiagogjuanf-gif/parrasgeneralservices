@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
 import { getSession } from '@/lib/auth'
 import { checkRateLimit } from '@/lib/rate-limit'
+import { SERVER_TOKEN } from '@/lib/server-token'
 
 export async function POST(request: NextRequest) {
   const ip = request.headers.get('x-forwarded-for') || 'unknown'
@@ -45,6 +46,7 @@ export async function POST(request: NextRequest) {
   session.fullName = user.fullName
   session.role = user.role
   session.isLoggedIn = true
+  session.serverToken = SERVER_TOKEN
   await session.save()
 
   return NextResponse.json({

@@ -7,6 +7,7 @@ export interface SessionData {
   fullName?: string
   role?: string
   isLoggedIn?: boolean
+  serverToken?: string
 }
 
 export async function getSession() {

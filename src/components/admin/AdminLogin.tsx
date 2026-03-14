@@ -27,6 +27,21 @@ export default function AdminLogin() {
     setLang(getStoredAdminLocale())
   }, [])
 
+  // Redirect if already authenticated
+  useEffect(() => {
+    fetch('/api/auth/me').then(res => {
+      if (!res.ok) return
+      res.json().then(data => {
+        const currentPath = window.location.pathname.replace(/\/$/, '')
+        if (data.role === 'ADMIN' || data.role === 'BOSS') {
+          router.replace(`${currentPath}/dashboard`)
+        } else {
+          router.replace(`${currentPath}/worker`)
+        }
+      })
+    }).catch(() => { /* not logged in, stay on page */ })
+  }, [router])
+
   const t = getAdminT(lang)
 
   const toggleLang = () => {
@@ -62,11 +77,11 @@ export default function AdminLogin() {
         const currentPath = window.location.pathname.replace(/\/$/, '')
         const role = data.user?.role
         if (data.user?.forcePasswordChange) {
-          router.push(`${currentPath}/change-password`)
+          router.replace(`${currentPath}/change-password`)
         } else if (role === 'ADMIN' || role === 'BOSS') {
-          router.push(`${currentPath}/dashboard`)
+          router.replace(`${currentPath}/dashboard`)
         } else {
-          router.push(`${currentPath}/worker`)
+          router.replace(`${currentPath}/worker`)
         }
       }, 2200)
     } catch {

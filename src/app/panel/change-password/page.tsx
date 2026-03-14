@@ -34,9 +34,9 @@ export default function ChangePasswordPage() {
       // Redirect based on role from /api/auth/me
       const me = await fetch('/api/auth/me').then(r => r.json())
       if (me.role === 'ADMIN' || me.role === 'BOSS') {
-        router.push(window.location.pathname.replace('/change-password', '/dashboard'))
+        router.replace(window.location.pathname.replace('/change-password', '/dashboard'))
       } else {
-        router.push(window.location.pathname.replace('/change-password', '/worker'))
+        router.replace(window.location.pathname.replace('/change-password', '/worker'))
       }
     } catch {
       setError('Error de conexión.')

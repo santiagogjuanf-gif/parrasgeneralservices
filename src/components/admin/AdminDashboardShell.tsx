@@ -43,7 +43,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
         return res.json()
       })
       .then((data) => { setUser(data); setLoading(false) })
-      .catch(() => router.push(adminBase))
+      .catch(() => router.replace(adminBase))
   }, [router, adminBase])
 
   const toggleLang = useCallback(() => {
@@ -55,7 +55,7 @@ export default function AdminDashboardShell({ children }: { children: ReactNode 
   const handleLogout = async () => {
     setShowFarewell(true)
     await fetch('/api/auth/logout', { method: 'POST' })
-    setTimeout(() => router.push(adminBase), 2400)
+    setTimeout(() => router.replace(adminBase), 2400)
   }
 
   if (loading) {

@@ -281,7 +281,7 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
   const handleLogout = async () => {
     setShowFarewell(true)
     await fetch('/api/auth/logout', { method: 'POST' })
-    setTimeout(() => router.push(window.location.pathname.split('/worker')[0]), 2200)
+    setTimeout(() => router.replace(window.location.pathname.split('/worker')[0]), 2200)
   }
 
   const toggleLang = () => {
