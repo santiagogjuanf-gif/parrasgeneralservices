@@ -65,9 +65,13 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
   const [detailTicket, setDetailTicket] = useState<Ticket | null>(null)
   const [showFarewell, setShowFarewell] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const galleryInputRef = useRef<HTMLInputElement>(null)
   const ticketFileRef = useRef<HTMLInputElement>(null)
+  const ticketGalleryRef = useRef<HTMLInputElement>(null)
   const ticketPage = 1
   const PAGE = 10
+  const [confirmTicketId, setConfirmTicketId] = useState<number | null>(null)
+  const [orderToast, setOrderToast] = useState('')
 
   useEffect(() => { setLang(getStoredAdminLocale()) }, [])
 
@@ -137,13 +141,19 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
     )
   }
 
-  const openOrder = (o: WorkOrder) => {
-    setActiveOrder({ ...o })
+  const openOrder = async (o: WorkOrder) => {
+    setActiveOrder({ ...o, photos: [] })
     setOrderError('')
     setPendingPhotos([])
     setLocationStatus('idle')
     setCoords(null)
     captureLocation()
+    try {
+      const full = await fetch(`/api/worker/workorders/${o.id}`).then(r => r.json())
+      if (full?.id) {
+        setActiveOrder(prev => prev ? { ...prev, photos: full.photos ?? [], tasks: full.tasks ?? prev.tasks } : null)
+      }
+    } catch { /* ignore */ }
   }
 
   const toggleTask = (taskId: number) => {
@@ -187,6 +197,11 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
     setActiveOrder(o => o ? { ...o, photos: o.photos.filter(p => p.id !== photoId) } : null)
   }
 
+  const showToast = (msg: string) => {
+    setOrderToast(msg)
+    setTimeout(() => setOrderToast(''), 3000)
+  }
+
   const handleSaveProgress = async () => {
     if (!activeOrder) return
     setSavingOrder(true)
@@ -200,6 +215,7 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
       }),
     })
     setSavingOrder(false)
+    showToast(t('worker.saveProgress'))
     loadOrders()
   }
 
@@ -252,8 +268,13 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
   }
 
   const handleDeleteTicket = async (id: number) => {
-    if (!confirm(t('tickets.deleteConfirm'))) return
-    await fetch(`/api/worker/tickets/${id}`, { method: 'DELETE' })
+    setConfirmTicketId(id)
+  }
+
+  const doDeleteTicket = async () => {
+    if (confirmTicketId === null) return
+    await fetch(`/api/worker/tickets/${confirmTicketId}`, { method: 'DELETE' })
+    setConfirmTicketId(null)
     loadTickets()
   }
 
@@ -550,11 +571,20 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
 
                 <input ref={fileInputRef} type="file" accept="image/*" multiple capture="environment"
                   className="hidden" onChange={e => handlePhotoSelect(e.target.files)} />
-                <button onClick={() => fileInputRef.current?.click()}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed py-3 text-sm font-medium transition-colors hover:border-emerald-400 hover:text-emerald-600"
-                  style={{ borderColor: '#E2E8F0', color: '#64748B' }}>
-                  <Camera size={16} />{t('worker.uploadPhotos')}
-                </button>
+                <input ref={galleryInputRef} type="file" accept="image/*" multiple
+                  className="hidden" onChange={e => handlePhotoSelect(e.target.files)} />
+                <div className="grid grid-cols-2 gap-2">
+                  <button onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center justify-center gap-2 rounded-xl border-2 border-dashed py-3 text-sm font-medium transition-colors hover:border-emerald-400 hover:text-emerald-600"
+                    style={{ borderColor: '#E2E8F0', color: '#64748B' }}>
+                    <Camera size={16} />{lang === 'es' ? 'Cámara' : 'Camera'}
+                  </button>
+                  <button onClick={() => galleryInputRef.current?.click()}
+                    className="flex items-center justify-center gap-2 rounded-xl border-2 border-dashed py-3 text-sm font-medium transition-colors hover:border-emerald-400 hover:text-emerald-600"
+                    style={{ borderColor: '#E2E8F0', color: '#64748B' }}>
+                    <Upload size={16} />{lang === 'es' ? 'Galería' : 'Gallery'}
+                  </button>
+                </div>
               </div>
 
               {orderError && (
@@ -607,17 +637,26 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
                   <label className="mb-1.5 block text-sm font-medium" style={{ color: '#334155' }}>{t('tickets.photo')}</label>
                   <input ref={ticketFileRef} type="file" accept="image/*" capture="environment" className="hidden"
                     onChange={e => setTicketFile(e.target.files?.[0] || null)} />
+                  <input ref={ticketGalleryRef} type="file" accept="image/*" className="hidden"
+                    onChange={e => setTicketFile(e.target.files?.[0] || null)} />
                   {ticketFile ? (
                     <div className="flex items-center justify-between rounded-xl border px-4 py-3" style={{ borderColor: '#E2E8F0' }}>
                       <span className="text-sm truncate" style={{ color: '#0F172A' }}>{ticketFile.name}</span>
                       <button onClick={() => setTicketFile(null)} className="text-red-400 hover:text-red-600"><X size={14} /></button>
                     </div>
                   ) : (
-                    <button onClick={() => ticketFileRef.current?.click()}
-                      className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed py-4 text-sm font-medium transition-colors hover:border-emerald-400 hover:text-emerald-600"
-                      style={{ borderColor: '#E2E8F0', color: '#64748B' }}>
-                      <Camera size={18} />{t('tickets.photo')}
-                    </button>
+                    <div className="grid grid-cols-2 gap-2">
+                      <button onClick={() => ticketFileRef.current?.click()}
+                        className="flex items-center justify-center gap-2 rounded-xl border-2 border-dashed py-3 text-sm font-medium transition-colors hover:border-emerald-400 hover:text-emerald-600"
+                        style={{ borderColor: '#E2E8F0', color: '#64748B' }}>
+                        <Camera size={16} />{lang === 'es' ? 'Cámara' : 'Camera'}
+                      </button>
+                      <button onClick={() => ticketGalleryRef.current?.click()}
+                        className="flex items-center justify-center gap-2 rounded-xl border-2 border-dashed py-3 text-sm font-medium transition-colors hover:border-emerald-400 hover:text-emerald-600"
+                        style={{ borderColor: '#E2E8F0', color: '#64748B' }}>
+                        <Upload size={16} />{lang === 'es' ? 'Galería' : 'Gallery'}
+                      </button>
+                    </div>
                   )}
                 </div>
 
@@ -674,6 +713,38 @@ export default function WorkerDashboard({ user }: { user: { fullName: string; ro
                   whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   {savingTicket ? t('tickets.saving') : t('tickets.save')}
                 </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Toast */}
+      <AnimatePresence>
+        {orderToast && (
+          <motion.div className="fixed bottom-24 left-1/2 z-[90] -translate-x-1/2 rounded-2xl px-5 py-3 text-sm font-semibold text-white shadow-lg"
+            style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.9 }}>
+            ✓ {orderToast}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Confirm Delete Ticket Modal */}
+      <AnimatePresence>
+        {confirmTicketId !== null && (
+          <motion.div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="mx-4 w-full max-w-sm rounded-2xl border bg-white p-6" style={{ borderColor: '#E2E8F0' }}
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}>
+              <h3 className="mb-2 text-base font-bold" style={{ color: '#0F172A' }}>{t('tickets.deleteConfirm')}</h3>
+              <div className="mt-5 flex gap-3">
+                <button onClick={() => setConfirmTicketId(null)}
+                  className="flex-1 rounded-xl border py-2.5 text-sm font-medium hover:bg-gray-50"
+                  style={{ borderColor: '#E2E8F0', color: '#64748B' }}>{t('tickets.cancel')}</button>
+                <button onClick={doDeleteTicket}
+                  className="flex-1 rounded-xl py-2.5 text-sm font-bold text-white"
+                  style={{ backgroundColor: '#EF4444' }}>{t('tickets.delete')}</button>
               </div>
             </motion.div>
           </motion.div>

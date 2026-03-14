@@ -43,6 +43,10 @@ export default function WorkOrdersAdmin() {
   const [filterStatus, setFilterStatus] = useState('')
   const [detail, setDetail] = useState<WorkOrderRow | null>(null)
   const [page, setPage] = useState(1)
+  const [toast, setToast] = useState('')
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null)
+
+  const showToast = (msg: string) => { setToast(msg); setTimeout(() => setToast(''), 3500) }
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -61,15 +65,18 @@ export default function WorkOrdersAdmin() {
     try {
       const res = await fetch('/api/admin/workorders/generate', { method: 'POST' })
       const data = await res.json()
-      alert(`${data.created} ${t('workorders.generated')}`)
+      showToast(`${data.created} ${t('workorders.generated')}`)
       load()
     } catch { /* ignore */ }
     setGenerating(false)
   }
 
-  const handleDelete = async (id: number) => {
-    if (!confirm(t('workorders.deleteConfirm'))) return
-    await fetch(`/api/admin/workorders/${id}`, { method: 'DELETE' })
+  const handleDelete = (id: number) => { setConfirmDeleteId(id) }
+
+  const doDelete = async () => {
+    if (confirmDeleteId === null) return
+    await fetch(`/api/admin/workorders/${confirmDeleteId}`, { method: 'DELETE' })
+    setConfirmDeleteId(null)
     load()
   }
 
@@ -190,6 +197,39 @@ export default function WorkOrdersAdmin() {
           )}
         </motion.div>
       )}
+
+      {/* Toast */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div className="fixed bottom-6 right-6 z-[90] rounded-2xl px-5 py-3 text-sm font-semibold text-white shadow-xl"
+            style={{ background: 'linear-gradient(135deg, #0B7A3B, #10B981)' }}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.9 }}>
+            ✓ {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Confirm Delete Modal */}
+      <AnimatePresence>
+        {confirmDeleteId !== null && (
+          <motion.div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="mx-4 w-full max-w-sm rounded-2xl border bg-white p-6" style={{ borderColor: '#E2E8F0' }}
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}>
+              <h3 className="mb-1 text-base font-bold" style={{ color: '#0F172A' }}>{t('workorders.deleteConfirm')}</h3>
+              <p className="text-sm" style={{ color: '#94A3B8' }}>ID #{confirmDeleteId}</p>
+              <div className="mt-5 flex gap-3">
+                <button onClick={() => setConfirmDeleteId(null)}
+                  className="flex-1 rounded-xl border py-2.5 text-sm font-medium hover:bg-gray-50"
+                  style={{ borderColor: '#E2E8F0', color: '#64748B' }}>{t('workorders.close')}</button>
+                <button onClick={doDelete}
+                  className="flex-1 rounded-xl py-2.5 text-sm font-bold text-white"
+                  style={{ backgroundColor: '#EF4444' }}>{t('workorders.delete')}</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Detail Modal */}
       <AnimatePresence>
