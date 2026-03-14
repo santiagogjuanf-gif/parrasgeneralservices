@@ -34,7 +34,7 @@ function StatusBadge({ days, lang }: { days: string; lang: string }) {
   )
 }
 
-const PRESET_TASKS = [
+const PRESET_TASKS_ES = [
   { label: 'Lavado general con máquina', count: null },
   { label: 'Pulido de pisos', count: null },
   { label: 'Limpieza de baños', count: 1 },
@@ -42,6 +42,17 @@ const PRESET_TASKS = [
   { label: 'Limpieza de estacionamiento', count: null },
   { label: 'Limpieza de vidrios', count: null },
 ]
+
+const PRESET_TASKS_EN = [
+  { label: 'General machine wash', count: null },
+  { label: 'Floor polishing', count: null },
+  { label: 'Bathroom cleaning', count: 1 },
+  { label: 'Office cleaning', count: 1 },
+  { label: 'Parking lot cleaning', count: null },
+  { label: 'Window cleaning', count: null },
+]
+
+const PAGE_SIZE = 10
 
 export default function StoresTable() {
   const { t, lang } = useAdminLang()
@@ -55,6 +66,7 @@ export default function StoresTable() {
   const [assignStoreId, setAssignStoreId] = useState<number | null>(null)
   const [assignUserId, setAssignUserId] = useState('')
   const [assigning, setAssigning] = useState(false)
+  const [page, setPage] = useState(1)
 
   const [form, setForm] = useState({
     name: '', address: '',
@@ -69,7 +81,7 @@ export default function StoresTable() {
         fetch('/api/admin/users').then(r => r.json()),
       ])
       if (Array.isArray(sr)) setStores(sr)
-      if (Array.isArray(wr)) setWorkers(wr.filter((u: WorkerOption) => u.role === 'WORKER' || u.role === 'STAFF'))
+      if (Array.isArray(wr)) setWorkers(wr.filter((u: WorkerOption) => u.role === 'WORKER'))
     } catch { /* ignore */ }
     setLoading(false)
   }
@@ -161,6 +173,9 @@ export default function StoresTable() {
   )
 
   const dayLabels = lang === 'es' ? DAY_LABELS_ES : DAY_LABELS
+  const presetTasks = lang === 'es' ? PRESET_TASKS_ES : PRESET_TASKS_EN
+  const totalPages = Math.ceil(stores.length / PAGE_SIZE)
+  const pagedStores = stores.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   return (
     <div>
@@ -202,7 +217,7 @@ export default function StoresTable() {
                 </tr>
               </thead>
               <tbody>
-                {stores.map((s) => (
+                {pagedStores.map((s) => (
                   <tr key={s.id} className="transition-colors hover:bg-gray-50" style={{ borderBottom: '1px solid #F1F5F9' }}>
                     <td className="px-6 py-4 font-medium" style={{ color: '#0F172A' }}>
                       <div className="flex items-center gap-2">
@@ -254,6 +269,20 @@ export default function StoresTable() {
               </tbody>
             </table>
           </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-1 border-t px-6 py-3" style={{ borderColor: '#E2E8F0' }}>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
+                <button key={p} onClick={() => setPage(p)}
+                  className="h-8 w-8 rounded-lg text-sm font-medium transition-colors"
+                  style={p === page
+                    ? { background: 'linear-gradient(135deg, #0B7A3B, #10B981)', color: '#fff' }
+                    : { color: '#64748B', backgroundColor: 'transparent' }}>
+                  {p}
+                </button>
+              ))}
+            </div>
+          )}
         </motion.div>
       )}
 
@@ -302,8 +331,7 @@ export default function StoresTable() {
       <AnimatePresence>
         {showForm && (
           <motion.div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 backdrop-blur-sm py-8"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={() => setShowForm(false)}>
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <motion.div className="mx-4 w-full max-w-lg rounded-2xl border bg-white p-6"
               style={{ borderColor: '#E2E8F0' }}
               initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
@@ -356,7 +384,7 @@ export default function StoresTable() {
                 <div>
                   <label className="mb-2 block text-sm font-medium" style={{ color: '#334155' }}>{t('stores.tasks')}</label>
                   <div className="mb-2 flex flex-wrap gap-1.5">
-                    {PRESET_TASKS.map((p, i) => (
+                    {presetTasks.map((p, i) => (
                       <button key={i} type="button" onClick={() => addPreset(p)}
                         className="rounded-lg border px-2.5 py-1 text-xs transition-colors hover:border-emerald-400 hover:text-emerald-600"
                         style={{ borderColor: '#E2E8F0', color: '#64748B' }}>

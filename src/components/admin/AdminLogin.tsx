@@ -61,10 +61,12 @@ export default function AdminLogin() {
       setTimeout(() => {
         const currentPath = window.location.pathname.replace(/\/$/, '')
         const role = data.user?.role
-        if (role === 'WORKER') {
-          router.push(`${currentPath}/worker`)
-        } else {
+        if (data.user?.forcePasswordChange) {
+          router.push(`${currentPath}/change-password`)
+        } else if (role === 'ADMIN' || role === 'BOSS') {
           router.push(`${currentPath}/dashboard`)
+        } else {
+          router.push(`${currentPath}/worker`)
         }
       }, 2200)
     } catch {

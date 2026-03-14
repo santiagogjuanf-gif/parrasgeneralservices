@@ -33,6 +33,8 @@ function StatusBadge({ status, t }: { status: string; t: (k: AdminKey) => string
   )
 }
 
+const PAGE_SIZE = 10
+
 export default function WorkOrdersAdmin() {
   const { t } = useAdminLang()
   const [orders, setOrders] = useState<WorkOrderRow[]>([])
@@ -40,6 +42,7 @@ export default function WorkOrdersAdmin() {
   const [generating, setGenerating] = useState(false)
   const [filterStatus, setFilterStatus] = useState('')
   const [detail, setDetail] = useState<WorkOrderRow | null>(null)
+  const [page, setPage] = useState(1)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -51,7 +54,7 @@ export default function WorkOrdersAdmin() {
     setLoading(false)
   }, [filterStatus])
 
-  useEffect(() => { load() }, [load])
+  useEffect(() => { load(); setPage(1) }, [load])
 
   const handleGenerate = async () => {
     setGenerating(true)
@@ -81,6 +84,9 @@ export default function WorkOrdersAdmin() {
         animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} />
     </div>
   )
+
+  const totalPages = Math.ceil(orders.length / PAGE_SIZE)
+  const pagedOrders = orders.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   return (
     <div>
@@ -130,7 +136,7 @@ export default function WorkOrdersAdmin() {
                 </tr>
               </thead>
               <tbody>
-                {orders.map(o => (
+                {pagedOrders.map(o => (
                   <tr key={o.id} className="transition-colors hover:bg-gray-50" style={{ borderBottom: '1px solid #F1F5F9' }}>
                     <td className="px-6 py-4 font-medium" style={{ color: '#0F172A' }}>
                       <div>{o.store.name}</div>
@@ -168,6 +174,20 @@ export default function WorkOrdersAdmin() {
               </tbody>
             </table>
           </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-1 border-t px-6 py-3" style={{ borderColor: '#E2E8F0' }}>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
+                <button key={p} onClick={() => setPage(p)}
+                  className="h-8 w-8 rounded-lg text-sm font-medium transition-colors"
+                  style={p === page
+                    ? { background: 'linear-gradient(135deg, #0B7A3B, #10B981)', color: '#fff' }
+                    : { color: '#64748B', backgroundColor: 'transparent' }}>
+                  {p}
+                </button>
+              ))}
+            </div>
+          )}
         </motion.div>
       )}
 

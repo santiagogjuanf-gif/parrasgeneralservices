@@ -8,12 +8,13 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  username     String   @unique
-  passwordHash String
-  fullName     String
-  role         String   @default("STAFF")
-  createdAt    DateTime @default(now())
+  id                   Int      @id @default(autoincrement())
+  username             String   @unique
+  passwordHash         String
+  fullName             String
+  role                 String   @default("WORKER")
+  forcePasswordChange  Boolean  @default(false)
+  createdAt            DateTime @default(now())
 
   assignedStores    StoreWorker[]
   workOrders        WorkOrder[]
