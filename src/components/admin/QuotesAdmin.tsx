@@ -181,12 +181,7 @@ export default function QuotesAdmin() {
     setFormError('')
     setSaving(true)
     try {
-      const body = {
-        ...form,
-        scopeItems: JSON.stringify(form.scopeItems),
-        pricingOptions: JSON.stringify(form.pricingOptions),
-        termsItems: JSON.stringify(form.termsItems),
-      }
+      const body = { ...form }
       if (editingId !== null) {
         await fetch(`/api/admin/quotes/${editingId}`, {
           method: 'PATCH',

@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
       scopeItems: JSON.stringify(body.scopeItems || []),
       pricingOptions: JSON.stringify(body.pricingOptions || []),
       commitment: body.commitment || DEFAULT_COMMITMENT,
-      termsItems: body.termsItems || DEFAULT_TERMS,
+      termsItems: Array.isArray(body.termsItems) ? JSON.stringify(body.termsItems) : (body.termsItems || DEFAULT_TERMS),
       status: 'DRAFT',
       notes: body.notes || null,
     },
