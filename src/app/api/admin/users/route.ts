@@ -10,7 +10,7 @@ export async function GET() {
   }
 
   const users = await prisma.user.findMany({
-    select: { id: true, username: true, fullName: true, role: true, createdAt: true },
+    select: { id: true, username: true, fullName: true, role: true, createdAt: true, forcePasswordChange: true },
     orderBy: { createdAt: 'desc' },
   })
 
@@ -19,18 +19,23 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const session = await getSession()
-  if (!session.isLoggedIn || session.role !== 'ADMIN') {
+  if (!session.isLoggedIn || !['ADMIN', 'BOSS'].includes(session.role!)) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  const { username, password, fullName, role } = await request.json()
+  const { username, password, fullName, role, forcePasswordChange } = await request.json()
 
   if (!username || !password || !fullName) {
     return NextResponse.json({ error: 'Username, password, and full name are required.' }, { status: 400 })
   }
 
-  const validRoles = ['ADMIN', 'STAFF']
-  const userRole = validRoles.includes(role) ? role : 'STAFF'
+  const validRoles = ['ADMIN', 'BOSS', 'WORKER']
+  const userRole = validRoles.includes(role) ? role : 'WORKER'
+
+  // BOSS cannot create ADMIN users
+  if (session.role === 'BOSS' && userRole === 'ADMIN') {
+    return NextResponse.json({ error: 'Forbidden: cannot create admin users.' }, { status: 403 })
+  }
 
   const existing = await prisma.user.findUnique({ where: { username } })
   if (existing) {
@@ -40,8 +45,14 @@ export async function POST(request: NextRequest) {
   const passwordHash = await bcrypt.hash(password, 10)
 
   const user = await prisma.user.create({
-    data: { username, passwordHash, fullName, role: userRole },
-    select: { id: true, username: true, fullName: true, role: true, createdAt: true },
+    data: {
+      username,
+      passwordHash,
+      fullName,
+      role: userRole,
+      forcePasswordChange: forcePasswordChange === true,
+    },
+    select: { id: true, username: true, fullName: true, role: true, createdAt: true, forcePasswordChange: true },
   })
 
   return NextResponse.json(user, { status: 201 })
