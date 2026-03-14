@@ -33,6 +33,13 @@ interface QuoteRow {
 
 const STATUSES = ['DRAFT', 'SENT', 'ACCEPTED', 'DECLINED']
 
+const STATUS_LABELS: Record<string, { en: string; es: string }> = {
+  DRAFT:    { en: 'Draft',    es: 'Borrador'  },
+  SENT:     { en: 'Sent',     es: 'Enviado'   },
+  ACCEPTED: { en: 'Accepted', es: 'Aceptado'  },
+  DECLINED: { en: 'Declined', es: 'Declinado' },
+}
+
 const DEFAULT_COMMITMENT = `At Parra's General Services, our goal is long-term professional relationships based on reliability, quality, and trust. We are committed to delivering consistent and high-standard cleaning services that support your business operations and maintain a safe, clean environment for staff and customers.\n\nPricing is negotiable, as our priority is establishing a strong working relationship and becoming your trusted service provider. We are fully prepared to begin services at any date you decide — whether immediately, within a week, or at a future scheduled time that best fits your needs.`
 
 const DEFAULT_TERMS = [
@@ -51,14 +58,15 @@ function statusColor(s: string) {
     : { bg: '#F8FAFC', color: '#64748B' }
 }
 
-function StatusBadge({ status }: { status: string }) {
+function StatusBadge({ status, lang }: { status: string; lang: string }) {
   const { bg, color } = statusColor(status)
+  const label = STATUS_LABELS[status]?.[lang as 'en' | 'es'] ?? status
   return (
     <span
       className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
       style={{ backgroundColor: bg, color }}
     >
-      {status}
+      {label}
     </span>
   )
 }
@@ -289,7 +297,9 @@ export default function QuotesAdmin() {
           >
             <option value="">{lang === 'es' ? 'Todos' : 'All'}</option>
             {STATUSES.map((s) => (
-              <option key={s} value={s}>{s}</option>
+              <option key={s} value={s}>
+                {STATUS_LABELS[s]?.[lang as 'en' | 'es'] ?? s}
+              </option>
             ))}
           </select>
           <motion.button
@@ -350,7 +360,7 @@ export default function QuotesAdmin() {
                         <span className="font-mono text-xs" style={{ color: '#94A3B8' }}>
                           {q.quoteNumber}
                         </span>
-                        <StatusBadge status={q.status} />
+                        <StatusBadge status={q.status} lang={lang} />
                       </div>
                       <p className="mt-1 font-semibold" style={{ color: '#0F172A' }}>
                         {q.clientName}
@@ -370,7 +380,9 @@ export default function QuotesAdmin() {
                         style={{ borderColor: '#E2E8F0' }}
                       >
                         {STATUSES.map((s) => (
-                          <option key={s} value={s}>{s}</option>
+                          <option key={s} value={s}>
+                            {STATUS_LABELS[s]?.[lang as 'en' | 'es'] ?? s}
+                          </option>
                         ))}
                       </select>
                       <button
